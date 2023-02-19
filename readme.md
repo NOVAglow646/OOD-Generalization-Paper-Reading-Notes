@@ -25,4 +25,6 @@
 ### 经典文章
 
 1. **Domain-Adversarial Training of Neural Networks** (2016) 提出DANN，训练domain label判别器来促使特征提取器学习到domain-invariant的特征 [[paper]](https://www.jmlr.org/papers/volume17/15-239/15-239.pdf)
+2. **In Search of Lost Domain Generalization** (ICLR2021) Domainbed benchmark [[paper]](https://arxiv.org/abs/2007.01434)
+3. **Invariant Risk Minimization** (2019) IRM [[paper]](https://arxiv.org/abs/1907.02893)
 
