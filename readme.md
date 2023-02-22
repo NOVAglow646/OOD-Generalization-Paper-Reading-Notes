@@ -24,7 +24,7 @@
 1. **The Many Faces of Robustness: A Critical Analysis of OOD Generalization** (ICCV2021) OOD robustness不应该是一个简单的指标，它在不同distribution shift下应该是不同的指标。难以推断现有方法中哪个能更广泛地work[[paper]](https://openaccess.thecvf.com/content/ICCV2021/papers/Hendrycks_The_Many_Faces_of_Robustness_A_Critical_Analysis_of_Out-of-Distribution_ICCV_2021_paper.pdf)[[note]](./all_notes/The-Many-Faces-of-Robustness-A-Critical-Analysis-of-OOD-Generalization.pdf)
 2. **Improved OOD Generalization via Adversarial Training and Pre-training** (ICML2021) 从理论上证明了在用Wasserstein距离刻画分布偏移的情况下，AT对一定距离内的OOD数据有泛化能力 [[paper]](https://arxiv.org/abs/2105.11144) 
 3. **Learning Representations that Support Robust Transfer of Predictors** (Arxiv2021) 提出了TRM(Transfer Risk Minimization)，把模型在不同domain的泛化能力直接作为objective优化 [[paper]](https://arxiv.org/abs/2110.09940) [[notes]](./all_notes/TRM.pdf)
-4. **Learning Causal Semantic Representation for OoD prediction** (NeurIPS2021) 很硬核，提出了一种新的Causal Semantic Model，文章关键假设是 $p(x|s,v)$ 和 $p(y|s)$ 在domain间保持不变，$p(s,v)$ 是domain change的唯一来源。证明了causal机制的可辨识性  [[paper]](Learning Causal Semantic Representation for OoD prediction) [[notes]](./all_notes/causal1.pdf)
+4. **Learning Causal Semantic Representation for OoD prediction** (NeurIPS2021) 很硬核，提出了一种新的Causal Semantic Model，文章关键假设是 $p(x|s,v)$ 和 $p(y|s)$ 在domain间保持不变， $p(s,v)$ 是domain change的唯一来源。证明了causal机制的可辨识性  [[paper]](https://proceedings.neurips.cc/paper/2021/file/310614fca8fb8e5491295336298c340f-Paper.pdf) [[notes]](./all_notes/causal1.pdf)
 
 
 
