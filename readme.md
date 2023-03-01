@@ -40,6 +40,15 @@
 
 
 
+## Domain Adaptation
+
+### 2019
+
+1. **On Learning Invariant Representations for Domain Adaptation** (ICML2019) 经典之作，指出了学习不变表示的做法的问题：在源域和目标域的label的边缘分布$p(Y)$的差距较大时，对齐源域和目标域不变表示+最小化源域误差的做法会导致目标域误差变大 [[paper]](http://proceedings.mlr.press/v97/zhao19a/zhao19a.pdf) [[notes]](./all_notes/On-Learning-Invariant-Representations-forDA.md)
+2. **Support and Invertibility in Domain-Invariant Representations** (PMLR2019) [[paper]](http://proceedings.mlr.press/v89/johansson19a.html)
+
+
+
 ## Adversarial Robustness
 
 ### 2022
