@@ -4,6 +4,8 @@
 
 PS：相比之下，Ye  et al . 2021的工作中将不变性刻画为$d(p(\phi|y,e),p(\phi|y,e')$，就更靠谱。
 
+PS：之前工作为什么提出基于H-divergence的distribution match，是因为之前的DA研究中，假设的是P(X)不同（covariate shift），甚至源域和目标域的X的support都不同，所以得先通过一个表示把他们的support映到同一个集合上，也就是H-divergence的衡量标准。这篇文章指出的就是这种衡量标准的问题。
+
 1. 对H-divergence的理解：
 
    定义：
