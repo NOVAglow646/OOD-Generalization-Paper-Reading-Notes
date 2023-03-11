@@ -4,12 +4,12 @@
 
 ![708c1bc80c7800b5c527eaddd943173](C:\Users\19000\AppData\Local\Temp\WeChat Files\708c1bc80c7800b5c527eaddd943173.jpg)
 
-总结如下：
+总结如下：设$Z$代表虚假特征。
 
-|                              | $P(X)$                                                       | $P(Y|X)$                    |
-| ---------------------------- | ------------------------------------------------------------ | --------------------------- |
-| divesity shift (PACS, VLCS): | $P_{tr}(X)\neq P_{te}(X)$                                    | $P_{tr}(X)=P_{te}(X)$       |
-| correlation shift (CMNIST):  | support($P_{tr}(X)$)=support($P_{te}(X)$) （若假设$P_{tr}(Y)=P_{te}(Y)$, 且假设风格与label无关，则$P_{tr}(Y|X)=P_{te}(Y|X)$） | $P_{tr}(Y|X)\neq P_{te}(X)$ |
+|                              | $P(X)$                                    | $P(Y|X)$                                                     |
+| ---------------------------- | ----------------------------------------- | ------------------------------------------------------------ |
+| divesity shift (PACS, VLCS): | $P_{tr}(X)\neq P_{te}(X)$                 | $P_{tr}(Y|X)$不一定$=P_{te}(Y|X)$，因为given $z\in Z$，$P_{tr}(Y|Z)$不一定$=P_{te}(Y|Z)$ |
+| correlation shift (CMNIST):  | support($P_{tr}(X)$)=support($P_{te}(X)$) | $P_{tr}(Y|X)\neq P_{te}(Y|X)$，因为$P_{tr}(Y|Z)\neq P_{te}(Y|Z)$ |
 
 
 
