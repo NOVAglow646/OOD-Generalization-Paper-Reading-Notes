@@ -24,7 +24,7 @@
 10. **On the Strong Correlation Between Model Invariance and Generalization** (NeurIPS2022) 提出了新的不变性衡量标准EI（衡量的是网络对于x和经OOD变换后的x'的预测的差距），发现其对于不变性的刻画远优于JS divergence。同时验证了EI与OOD泛化性能的正比关系。[[paper]](https://arxiv.org/pdf/2207.07065.pdf)
 11. **OoD-Bench: Quantifying and Understanding Two Dimensions of Out-of-Distribution Generalization** (CVPR2022 Oral) diversity shift/Correlation shift [[paper]](https://arxiv.org/abs/2106.03721) [[notes(包含关于两种OOD数据集所导出的 P(X) 以及 P(Y|X)) 性质的总结]](./all_noets/oodbench.pdf)
 12. **Assaying Out-Of-Distribution Generalization in Transfer Learning** (Arxiv 2022) 各种metric对OOD acc影响的实验性总结 [[paper]](https://arxiv.org/abs/2207.09239)
-13. **On Certifying and Improving Generalization to Unseen Domains** (Arxiv 2022) [[paper]](https://arxiv.org/abs/2206.12364) [[notes]](./all_notes/certify.)
+13. **On Certifying and Improving Generalization to Unseen Domains** (Arxiv 2022) 发现了模型对于在同一分布距离下不同类型OOD shift的性能有较大差异，提出了minimize某一距离下worst-case loss。 [[paper]](https://arxiv.org/abs/2206.12364) [[notes]](./all_notes/certify.md)
 
 ### 2021
 
@@ -34,7 +34,7 @@
 4. **Learning Causal Semantic Representation for OoD prediction** (NeurIPS 2021) 很硬核，提出了一种新的Causal Semantic Model，文章关键假设是 $p(x|s,v)$ 和 $p(y|s)$ 在domain间保持不变， $p(s,v)$ 是domain change的唯一来源。证明了causal机制的可辨识性  [[paper]](https://proceedings.neurips.cc/paper/2021/file/310614fca8fb8e5491295336298c340f-Paper.pdf) [[notes]](./all_notes/causal1.pdf)
 5. **Exploiting Domain-Specifific Features to Enhance Domain Generalization** (NeurIPS 2021) 使用了很多trick：从information bottleneck的角度证明了domain-specific feature对泛化也是有帮助的；提出了一种基于最小化domain-invariant feature和domain-specific feature之间协方差矩阵的解耦；提出通过meta learning来利用domain-specific feature的泛化能力。[[paper]](https://arxiv.org/abs/2110.09410) [[notes]](./all_notes/disen1.md)
 6. **Towards a Theoretical Framework of Out-of-Distribution Generalization** (NeurIPS 2021) 通过定义了conditioned on class的表示不变性，以及表示的informativeness，并据此定义了什么是可学习的OOD问题，推导出了OOD泛化误差上界可以被这两个量表示 [[paper]](https://proceedings.neurips.cc/paper/2021/hash/c5c1cb0bebd56ae38817b251ad72bedb-Abstract.html) 
-7. **Quantifying and Improving Transferability in Domain Generalization** (NeurIPS 2021) 
+7. **Quantifying and Improving Transferability in Domain Generalization** (NeurIPS 2021)  提出了基于给定假设族的域间可迁移性的指标（越小越容易迁移/泛化），并提出了一个min-max优化过程来提升迁移性（有理论保证） [[paper]](https://arxiv.org/abs/2106.03632)
 
 ### 2020
 
@@ -42,7 +42,7 @@
 
    $\min _{\omega, \Phi} \sum^e \mathcal{R}^e(\omega, \Phi)+\lambda \operatorname{Var}\left(\mathcal{R}^e(\omega, \Phi)\right)$，动机：如果$\Phi$是不变表示，那么不同环境e应该满足 $P^e(Y \mid \Phi(X))=P(Y \mid \Phi(X))$ ，此时loss也应该一样，所以对loss的方差做正则。（个人觉得存在问题，因为当不同环境loss的值一样时，最优分类器也不一定一样）[[paper]](https://arxiv.org/pdf/2003.00688.pdf)
 
-2. **DISTRIBUTIONALLY ROBUST NEURAL NETWORKS FOR GROUP SHIFTS: ON THE IMPORTANCE OF REGULARIZATION FOR WORST-CASE GENERALIZATION (Group DRO)** (ICLR 2020) 
+2. **DISTRIBUTIONALLY ROBUST NEURAL NETWORKS FOR GROUP SHIFTS: ON THE IMPORTANCE OF REGULARIZATION FOR WORST-CASE GENERALIZATION (Group DRO)** (ICLR 2020) 将数据集分成(spurious feature, label)的group，最小化每个group上的loss的最大的凸组合（权重可以优化，loss更大的group的loss倾向于有更大的权重） [[paper]](https://arxiv.org/abs/1911.08731)
 
 ### 经典文章
 
