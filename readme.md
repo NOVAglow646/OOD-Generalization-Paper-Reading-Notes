@@ -79,6 +79,18 @@
 
 
 
+## Large Language Models
+
+### 2022
+
+
+
+### 2021
+
+**LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS**  [[paper]](https://arxiv.org/abs/2106.09685)
+
+
+
 ## 其他杂文
 
 1. **On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima** (ICLR2017) large-batch会导致模型更容易进入尖锐的极小值点，而尖锐的极小值点会不利于泛化 [[paper]](https://arxiv.org/abs/1609.04836)
