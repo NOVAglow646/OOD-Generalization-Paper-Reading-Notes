@@ -67,6 +67,10 @@
 
 ## Domain Adaptation
 
+### 2023
+
+1. **Diffusion-based Target Sampler for Unsupervised Domain Adaptation** 用diffusion model生成和目标域特征一致的样本来实现DA (Arxiv 2023) [[paper]](https://arxiv.org/pdf/2303.12724.pdf)
+
 ### 2019
 
 1. **On Learning Invariant Representations for Domain Adaptation** (ICML2019) 经典之作，指出了学习不变表示的做法的问题：在源域和目标域的label的边缘分布 $p(Y)$ 的差距较大时，对齐源域和目标域不变表示+最小化源域误差的做法会导致目标域误差变大 [[paper]](http://proceedings.mlr.press/v97/zhao19a/zhao19a.pdf) [[notes]](./all_notes/On-Learning-Invariant-Representations-forDA.md)
