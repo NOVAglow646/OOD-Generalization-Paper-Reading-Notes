@@ -53,6 +53,10 @@
 
 2. **DISTRIBUTIONALLY ROBUST NEURAL NETWORKS FOR GROUP SHIFTS: ON THE IMPORTANCE OF REGULARIZATION FOR WORST-CASE GENERALIZATION (Group DRO)** (ICLR 2020) 将数据集分成(spurious feature, label)的group，最小化每个group上的loss的最大的凸组合（权重可以优化，loss更大的group的loss倾向于有更大的权重） [[paper]](https://arxiv.org/abs/1911.08731)
 
+3. **AUGMIX: A SIMPLE DATA PROCESSING METHOD TO IMPROVE ROBUSTNESS AND UNCERTAINTY** (ICLR 2020) 鼓励模型对于经过不同data augmentation增强后的样本的预测一致性 [[paper]](https://arxiv.org/pdf/1912.02781.pdf)
+
+4. **Adversarial Examples Improve Image Recognition** (NeurIPS 2020)  Advprop [[paper]](https://openaccess.thecvf.com/content_CVPR_2020/html/Xie_Adversarial_Examples_Improve_Image_Recognition_CVPR_2020_paper.html)
+
 ### 经典文章
 
 1. **Domain-Adversarial Training of Neural Networks** (2016) 提出DANN，训练domain label判别器来促使特征提取器学习到domain-invariant的特征 [[paper]](https://www.jmlr.org/papers/volume17/15-239/15-239.pdf)
@@ -63,6 +67,18 @@
 
    
 
+## Graph OOD Generalization
+
+### 2023
+
+1.  **Towards Understanding Generalization of Graph Neural Networks** (ICLR 2023) 分析了不同GNN架构对泛化误差的影响。特别地，对于GNN最大度数越小，泛化误差越小。 [[paper]](https://openreview.net/forum?id=BhMyLk0YNy)
+2. **Multi-task Self-supervised Graph Neural Networks Enable Stronger Task Generalization** (ICLR 2023) 利用Multiple Gradient Descent来同时优化多个SSL任务的损失，以实现task generalization [[paper]](https://openreview.net/forum?id=1tHAZRqftM)
+
+### 2022
+
+1. **Learning Substructure Invariance for Out-of-Distribution Molecular Representations** (NeurIPS 2022 Spotlight) 无环境标签的图分类，能拿到多个图（分子）。先推导出了一个ELBO以训练出一个环境判别器，优化目标为最大化图表示 $z$ 与标签 $y$之间的互信息、最小化$I(y;e|z)$。[[paper]](https://openreview.net/forum?id=2nWUNTnFijm) [[notes]](./all_notes/molecular.pdf)
+2. **Learning Causally Invariant Representations for Out-of-Distribution Generalization on Graphs** (NeurIPS 2022) 首先通过g来预测causal子图，其补图就是spurious subgraph。然后通过推导说明了causal feature与环境无关的条件可以转化为最大化同一类别的feature的互信息（通过一个supervised contrastive loss实现）。在这个约束下，再最大化 $G_s$  $G_c$  分别与y的互信息（$G_s$ 是 $G_c$  的补图，最大化Gs和y的互信息是为了“将Gs从Gc中分离出去”），同时要保证Gs与y的互信息比Gc和y的互信息要小（互信息的优化通过优化loss实现，loss越小互信息越大）[[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/file/8b21a7ea42cbcd1c29a7a88c444cce45-Supplemental-Conference.pdf) [[notes]](./all_notes/nips22_causal.md)
+
 
 
 ## Domain Adaptation
@@ -70,6 +86,8 @@
 ### 2023
 
 1. **Diffusion-based Target Sampler for Unsupervised Domain Adaptation** 用diffusion model生成和目标域特征一致的样本来实现DA (Arxiv 2023) [[paper]](https://arxiv.org/pdf/2303.12724.pdf)
+
+   
 
 ### 2019
 
