@@ -14,6 +14,14 @@
 10. **REVISITING ADAPTERS WITH ADVERSARIAL TRAINING** 发现AdvProp中为clean和adv样本分别准备BN层不是必须的，关键在于共享参数+domain adaptator (ICLR 2023) [[paper]](https://openreview.net/forum?id=HPdxC1THU8T)
 11. **UNDERSTANDING OUT-OF-DISTRIBUTION ACCURACIES THROUGH QUANTIFYING DIFFICULTY OF TEST SAMPLES**  (Arxiv 2023) 使用entropy based confusion score来衡量样本的difficulty，发现OOD数据confusion score更高（模型预测的熵更高） [[paper]](https://arxiv.org/pdf/2203.15100.pdf)
 12. **Effective Robustness against Natural Distribution Shifts for Models with Different Training Data** (Arxiv 2023) [[paper]](https://arxiv.org/pdf/2302.01381.pdf)
+13. **Sharpness-Aware Gradient Matching for Domain Generalization** (CVPR 2023) [[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Wang_Sharpness-Aware_Gradient_Matching_for_Domain_Generalization_CVPR_2023_paper.html)
+14. **Improved Test-Time Adaptation for Domain Generalization** (CVPR 2023) [[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Chen_Improved_Test-Time_Adaptation_for_Domain_Generalization_CVPR_2023_paper.html)
+15. **Domain Generalization Guided by Gradient Signal to Noise Ratio of Parameters** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Michalkiewicz_Domain_Generalization_Guided_by_Gradient_Signal_to_Noise_Ratio_of_ICCV_2023_paper.html)
+16. **Cross Contrasting Feature Perturbation for Domain Generalization** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Li_Cross_Contrasting_Feature_Perturbation_for_Domain_Generalization_ICCV_2023_paper.html)
+17. **A Sentence Speaks a Thousand Images: Domain Generalization through Distilling CLIP with Language Guidance** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Huang_A_Sentence_Speaks_a_Thousand_Images_Domain_Generalization_through_Distilling_ICCV_2023_paper.html)
+18. **Understanding Hessian Alignment for Domain Generalization** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/papers/Hemati_Understanding_Hessian_Alignment_for_Domain_Generalization_ICCV_2023_paper.pdf)
+19. **Flatness-Aware Minimization for Domain Generalization** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Zhang_Flatness-Aware_Minimization_for_Domain_Generalization_ICCV_2023_paper.html)
+20. **MAP: Towards Balanced Generalization of IID and OOD through Model-Agnostic Adapters** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Zhang_MAP_Towards_Balanced_Generalization_of_IID_and_OOD_through_Model-Agnostic_ICCV_2023_paper.html)
 
 ### 2022
 
@@ -67,7 +75,21 @@
 
 3. **Invariant Risk Minimization** (2019) IRM 注意：IRM的泛化误差bound中，X是通过虚假特征和不变特征concatenate再经过线性变换得来的，很strict [[paper]](https://arxiv.org/abs/1907.02893)
 
-   
+
+
+
+## Domain Generalization/Adaptation in Down-stream CV/NLP Tasks
+
+### 2023
+
+1. **CLIP the Gap: A Domain Generalization Approach for Object Detection** (CVPR 2023) [[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Vidit_CLIP_the_Gap_A_Single_Domain_Generalization_Approach_for_Object_CVPR_2023_paper.html)
+2. **Improving Zero-Shot Generalization and Robustness of Multi-Modal Models** (CVPR 2023) [[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Ge_Improving_Zero-Shot_Generalization_and_Robustness_of_Multi-Modal_Models_CVPR_2023_paper.html)
+3. **Towards Domain Generalization for Multi-View 3D Object Detection in Bird-Eye-View** (CVPR 2023) [[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Wang_Towards_Domain_Generalization_for_Multi-View_3D_Object_Detection_in_Bird-Eye-View_CVPR_2023_paper.html)
+4. **Single Domain Generalization for LiDAR Semantic Segmentation** (CVPR 2023) [[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Kim_Single_Domain_Generalization_for_LiDAR_Semantic_Segmentation_CVPR_2023_paper.html)
+5. **Modality-Agnostic Debiasing for Single Domain Generalization** (CVPR 2023) [[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Qu_Modality-Agnostic_Debiasing_for_Single_Domain_Generalization_CVPR_2023_paper.html)
+6. **Improving Zero-Shot Generalization for CLIP with Synthesized Prompts** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Wang_Improving_Zero-Shot_Generalization_for_CLIP_with_Synthesized_Prompts_ICCV_2023_paper.html)
+7. **Global Adaptation meets Local Generalization: Unsupervised Domain Adaptation for 3D Human Pose Estimation** (ICCV 2023) [[paper]](https://arxiv.org/abs/2303.16456)
+8. **Bayesian Prompt Learning for Image-Language Model Generalization** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Derakhshani_Bayesian_Prompt_Learning_for_Image-Language_Model_Generalization_ICCV_2023_paper.html)
 
 ## Graph OOD Generalization
 
