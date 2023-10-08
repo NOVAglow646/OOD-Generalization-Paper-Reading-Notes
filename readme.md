@@ -2,14 +2,14 @@
 
 ### 2023
 
-1. **FREE LUNCH FOR DOMAIN ADVERSARIAL TRAINING: ENVIRONMENT LABEL SMOOTHING** (ICLR2023) 使用简单的domain label smoothing方法来解决DANN训练不稳定的问题，给出了丰富的理论支持 [[paper]](https://arxiv.org/abs/2302.00194)[[论文分享会slide]](./all_notes/2023.2.17domain_adversarial_training_with_ELS.pdf)
+1. **FREE LUNCH FOR DOMAIN ADVERSARIAL TRAINING: ENVIRONMENT LABEL SMOOTHING** (ICLR2023) 使用简单的domain label smoothing方法来解决DANN训练不稳定的问题，给出了丰富的理论支持 [[paper]](https://arxiv.org/abs/2302.00194)[[论文分享会slides]](./all_notes/2023.2.17domain_adversarial_training_with_ELS.pdf)
 2. **Generalizability of Adversarial Robustness Under Distribution Shifts** (AAAI2023) AT有助于Domain Adaptation，但是在Domain Generalization setting下不如正常模型 [[paper]](https://arxiv.org/abs/2209.15042)
 3. **WHAT IS MISSING IN IRM TRAINING AND EVALUATION? CHALLENGES AND SOLUTIONS** (ICLR2023) 指出large-batch会使得各IRM方法的结果不准，small-batch的效果足以匹敌基于large-batch的优化算法。指出了CMNIST只测-90%是不完善的。基于IRM-GAME提出了BLOC-IRM，发现显示地引入per-environment stationary正则项能缓解各domain分类器一致的这个约束带来的各环境分类器次优的问题。[[paper]](https://openreview.net/forum?id=MjsDeTcDEy)
 4. **Aggregation of Disentanglement: Reconsidering Domain Variations in Domain Generalization** (arxiv2023) 使用contrastive learning来拉近统一domain数据的表示、推远不同domain数据的表示（文章claim自己是首个在contrastive learning for DG中考虑不同domain的），同时提出所谓的domain-specific feature也有助于泛化（但是文章的实现算法貌似没有显式的解耦invariant/variant feature的过程，也没有显示地构建domain-specific feature）[[paper]](https://arxiv.org/abs/2302.02350)
 5. **Domain Generalization Emerges from Dreaming** (arxiv2023) 先通过类似AdaIN的方法生成风格迁移的图像 $x'$，再minimize原始图像 $x$ 和 $x'$的prediction的差距。性能甚至可以超过SWAD。[[paper]](https://arxiv.org/pdf/2302.00980.pdf)
 6. **BREAKING CORRELATION SHIFT VIA CONDITIONAL INVARIANT REGULARIZER** (ICLR2023) 证明了对于correlation shift，在给定y时，若网络输出 $f(X)$ 独立于spurious feature $Z$ ，则可保证OOD [[paper]](https://arxiv.org/pdf/2207.06687.pdf)
 7. **ASSESSING MODEL OUT-OF-DISTRIBUTION GENERALIZATION WITH SOFTMAX PREDICTION PROBABILITY BASELINES AND A CORRELATION METHOD** (ICLR 2023 rejected) 提出了新的OOD metric，鼓励：①预测的confident高 ②预测具有多样性（避免所有样本被预测为同一个类）。因为被审稿人喷缺乏理论依据而被拒。[[openreview] ](https://openreview.net/forum?id=1maXoEyeqx)
-8. **MODELING THE DATA-GENERATING PROCESS IS NECESSARY FOR OUT-OF-DISTRIBUTION GENERALIZATION** (ICLR 2023 top 25%) 用统一的causal graph来描述correlation shift和diversity shift，提出了multi-shift的问题，并证明了学到的表示必须满足由causal graph所导出的条件独立性条件是保证OOD泛化的必要条件。 [[paper]](https://openreview.net/forum?id=uyqks-LILZX) [[论文分享会slide]](./all_notes/2023.3.15[ICLR2023]CACM.pdf)
+8. **MODELING THE DATA-GENERATING PROCESS IS NECESSARY FOR OUT-OF-DISTRIBUTION GENERALIZATION** (ICLR 2023 top 25%) 用统一的causal graph来描述correlation shift和diversity shift，提出了multi-shift的问题，并证明了学到的表示必须满足由causal graph所导出的条件独立性条件是保证OOD泛化的必要条件。 [[paper]](https://openreview.net/forum?id=uyqks-LILZX) [[论文分享会slides]](./all_notes/2023.3.15[ICLR2023]CACM.pdf)
 9. **Domain Generalization via Nuclear Norm Regularization** (Arxiv 2023) 认为引入对 $\phi(x)$ 的低秩constraint有助于解耦不变特征和环境特征 [[paper]](https://arxiv.org/pdf/2303.07527.pdf)
 10. **REVISITING ADAPTERS WITH ADVERSARIAL TRAINING** 发现AdvProp中为clean和adv样本分别准备BN层不是必须的，关键在于共享参数+domain adaptator (ICLR 2023) [[paper]](https://openreview.net/forum?id=HPdxC1THU8T)
 11. **UNDERSTANDING OUT-OF-DISTRIBUTION ACCURACIES THROUGH QUANTIFYING DIFFICULTY OF TEST SAMPLES**  (Arxiv 2023) 使用entropy based confusion score来衡量样本的difficulty，发现OOD数据confusion score更高（模型预测的熵更高） [[paper]](https://arxiv.org/pdf/2203.15100.pdf)
@@ -18,8 +18,8 @@
 ### 2022
 
 1. **Out-of-distribution Generalization with Causal Invariant Transformations** (CVPR2022) 给出了一种不需要discover causal feature的方法，而是直接找Causal Invariant Transformation，证明了如果网络输出对于CIT不变，则可实现OOD泛化 [[paper]](https://arxiv.org/abs/2203.11528)[[note]](./all_notes/Out-of-distribution_Generalization_with_Causal_Invariant_Transformations.md)
-2. **Exact Feature Distribution Matching for Arbitrary Style Transfer and Domain Generalization** (CVPR2022) 对AdaIN的改进，通过对齐内容图片和风格图片的高阶统计量，来实现更好的风格迁移，并用迁移的图片来增强泛化能力 [[paper]](https://arxiv.org/abs/2203.07740) [[论文分享会slide]](./all_notes/2022.11.17-EHM(final).pdf)
-3. **Enhance the Visual Representation via Discrete Adversarial Training** (NeurIPS 2022) 利用VQGAN，在其产生的离散表示上做AT，生成具有更少高频噪声、更大范数、更符合现实世界OOD偏移的augmented data，来增强OOD泛化。刷爆许多ImageNet OOD dataset的SOTA。 [[paper]](https://arxiv.org/abs/2209.07735) [[论文分享会slide]](./all_notes/2022.12.15DAT.pdf)
+2. **Exact Feature Distribution Matching for Arbitrary Style Transfer and Domain Generalization** (CVPR2022) 对AdaIN的改进，通过对齐内容图片和风格图片的高阶统计量，来实现更好的风格迁移，并用迁移的图片来增强泛化能力 [[paper]](https://arxiv.org/abs/2203.07740) [[论文分享会slides]](./all_notes/2022.11.17-EHM(final).pdf)
+3. **Enhance the Visual Representation via Discrete Adversarial Training** (NeurIPS 2022) 利用VQGAN，在其产生的离散表示上做AT，生成具有更少高频噪声、更大范数、更符合现实世界OOD偏移的augmented data，来增强OOD泛化。刷爆许多ImageNet OOD dataset的SOTA。 [[paper]](https://arxiv.org/abs/2209.07735) [[论文分享会slides]](./all_notes/2022.12.15DAT.pdf)
 4. **Pyramid Adversarial Training Improves ViT Performance** (CVPR2022) 通过具有不同尺度结构扰动的AT来增强ViT性能，学到的扰动能保存shape信息 [[paper]](https://arxiv.org/abs/2111.15121)
 5. **CROSSMATCH: CROSS-CLASSIFIER CONSISTENCY REGULARIZATION FOR OPEN-SET SINGLE DOMAIN GENERALIZATION** (ICLR2022) 很难的新setting，open-set single domain generalization [[paper]](https://openreview.net/forum?id=48RBsJwGkJf) [[notes]](./all_notes/cross-matching-ICLR22.pdf)
 6. **UNCERTAINTY MODELING FOR OUT-OF-DISTRIBUTION GENERALIZATION** (ICLR2022) 假设数据的均值和方差服从潜在的高斯分布 $\mathcal{N}(\mu,\Sigma_\mu)$ 和 $\mathcal{N}(\sigma,\Sigma_\sigma)$ ，提出了估计 $\Sigma_\mu$ 和 $\Sigma_\sigma$ 的方法，并由此提出了一种新的数据增强 [[paper]](https://arxiv.org/abs/2202.03958) [[notes]](./all_notes/uncertain.pdf)
@@ -45,6 +45,7 @@
 6. **Towards a Theoretical Framework of Out-of-Distribution Generalization** (NeurIPS 2021) 通过定义了conditioned on class的表示不变性，以及表示的informativeness，并据此定义了什么是可学习的OOD问题，推导出了OOD泛化误差上界可以被这两个量表示 [[paper]](https://proceedings.neurips.cc/paper/2021/hash/c5c1cb0bebd56ae38817b251ad72bedb-Abstract.html) 
 7. **Quantifying and Improving Transferability in Domain Generalization** (NeurIPS 2021)  提出了基于给定假设族的域间可迁移性的指标（越小越容易迁移/泛化），并提出了一个min-max优化过程来提升迁移性（有理论保证） [[paper]](https://arxiv.org/abs/2106.03632)
 8. **SWAD: Domain Generalization by Seeking Flat Minima** (NeurIPS 2021) 提出了SWAD，并从理论上证明了flat的loss landscape对OOD泛化有帮助 [[paper]](https://arxiv.org/pdf/2102.08604.pdf)
+9. **Domain Generalization Using Causal Matching** (ICML 2021) 对齐不同环境的同一类别的表示来学习不变特征。[[paper]](http://arxiv.org/abs/2006.07500)
 
 ### 2020
 
@@ -73,9 +74,11 @@
 ### 2023
 
 1.  **Towards Understanding Generalization of Graph Neural Networks** (ICLR 2023) 分析了不同GNN架构对泛化误差的影响。特别地，对于GNN最大度数越小，泛化误差越小。 [[paper]](https://openreview.net/forum?id=BhMyLk0YNy)
-2. **Multi-task Self-supervised Graph Neural Networks Enable Stronger Task Generalization** (ICLR 2023) 利用Multiple Gradient Descent来同时优化多个SSL任务的损失，以实现task generalization [[paper]](https://openreview.net/forum?id=1tHAZRqftM)
-3. **Mind the Label Shift of Augmentation-based Graph OOD Generalization (LiSA)** (CVPR 2023) 最小化增强图的分类误差以及增强图与原图（子图和全图）的互信息，同时最大化不同子图之间基于energy function衡量的分布距离，来获得一系列label-invariant的子图（一个子图生成器模拟产生一个环境的数据）。得到不同环境数据后再min loss+var（常规做法）。 [[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Yu_Mind_the_Label_Shift_of_Augmentation-Based_Graph_OOD_Generalization_CVPR_2023_paper.html)
-4. **Joint Learning of Label and Environment Causal Independence for Graph Out-of-Distribution Generalization (LECI)** (Arxiv 2023) **[FIIF&PIIF]** 需要环境标签。优化两个目标：(1)让子图生成器产生分类误差尽量大的spurious subgraph，并对抗地训练一个用spurious graph做预测的分类器 (2)让子图生成器产生无法判别环境的causal graph，并对抗地训练一个环境判别器 [[paper]](https://arxiv.org/abs/2306.01103)
+2.  **Multi-task Self-supervised Graph Neural Networks Enable Stronger Task Generalization** (ICLR 2023) 利用Multiple Gradient Descent来同时优化多个SSL任务的损失，以实现task generalization [[paper]](https://openreview.net/forum?id=1tHAZRqftM)
+3.  **Mind the Label Shift of Augmentation-based Graph OOD Generalization (LiSA)** (CVPR 2023) 最小化增强图的分类误差以及增强图与原图（子图和全图）的互信息，同时最大化不同子图之间基于energy function衡量的分布距离，来获得一系列label-invariant的子图（一个子图生成器模拟产生一个环境的数据）。得到不同环境数据后再min loss+var（常规做法） [[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Yu_Mind_the_Label_Shift_of_Augmentation-Based_Graph_OOD_Generalization_CVPR_2023_paper.html)
+4.  **Joint Learning of Label and Environment Causal Independence for Graph Out-of-Distribution Generalization (LECI)** (Arxiv 2023) **[FIIF&PIIF]** 需要环境标签。优化两个目标：(1)让子图生成器产生分类误差尽量大的spurious subgraph，并对抗地训练一个用spurious graph做预测的分类器 (2)让子图生成器产生无法判别环境的causal graph，并对抗地训练一个环境判别器 [[paper]](https://arxiv.org/abs/2306.01103)
+5.  **RETHINKING INVARIANT GRAPH REPRESENTATION LEARNING WITHOUT ENVIRONMENT PARTITIONS (GALA)** (ICLR 2023 Domain Generalization Workshop) 改进版CIGA。讲CIGA的causal contrastive loss改为对齐spurious correlation主导和invariant correlation主导的两部分子集，不同关联主导的数据通过一个额外的ERM模型获得（ERM预测的label不同，就认为是它们属于由不同的关联主导的part） [[paper]](https://openreview.net/forum?id=bjw5jqGtDy)
+6.  **FLOOD: A Flexible Invariant Learning Framework for Out-of-Distribution Generalization on Graphs** (KDD 2023) node-level OOD任务。通过已有的图augmentation方法产生一系列增强环境，再使用如VREx的不变学习目标；同时加一个Bootstrapped Representation Learning目标。 [[paper]](https://dl.acm.org/doi/10.1145/3580305.3599355)
 
 ###  2022
 
@@ -83,10 +86,21 @@
 2. **Learning Causally Invariant Representations for Out-of-Distribution Generalization on Graphs (CIGA)**  (NeurIPS 2022) **[FIIF&PIIF]** 首先通过g来预测causal子图，其补图就是spurious subgraph。然后通过推导说明了causal feature与环境无关的条件可以转化为最大化同一类别的feature的互信息（通过一个supervised contrastive loss实现）。在这个约束下，再最大化 $G_s$  $G_c$  分别与y的互信息（$G_s$ 是 $G_c$  的补图，最大化Gs和y的互信息是为了“将Gs从Gc中分离出去”），同时要保证Gs与y的互信息比Gc和y的互信息要小（互信息的优化通过优化loss实现，loss越小互信息越大）[[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/file/8b21a7ea42cbcd1c29a7a88c444cce45-Supplemental-Conference.pdf) [[notes]](./all_notes/nips22_causal.md)
 3. **Discovering Invariant Rationales for Graph Neural Networks (DIR)**  (ICLR 2022)  **[FIIF]** 将点之间特征内积最大的子图作为causal子图，同时手动地改变causal子图和spurious子图的组合，模拟多个s的环境。优化目标为优化所有s下的loss以及其方差。其他补充：①加了一个prediction内积项以对spurious correlation进行正则 ②专门学一个用s来预测y的分支，有点类似Learning Causally Invariant Representations for Out-of-Distribution Generalization on Graphs (NIPS 22)的做法，是为了更好地解耦c和s。思考：causal子图的寻找方法缺乏依据 [[paper]](https://arxiv.org/abs/2201.12872) 
 4. **Handling Distribution Shifts on Graphs: An Invariance Perspective (EERM)** (ICLR 2022) node-level分类任务。先通过一个AT method ，进行删/增边和最大化每个子图的方差来获得k个子图（来模拟k个环境），然后再min每个子图（环境）上loss的variance和分类loss。[[paper]](https://arxiv.org/abs/2202.02466) [[notes]](./all_notes/EERM.md)
+5. **Shift-Robust Node Classification via Graph Adversarial Clustering** (Arxiv 2022) node-level分类任务，open-set DA场景，一个图里有labeled source data和unlabeled target data。该框架可解决new class和new distribution的问题。先在unlabel target domain聚类，然后把聚类模型拿到label source上对齐label。同时为了进一步优化聚类能力，还最小化了source聚类结果和真实label之间的KL散度。[[paper]](https://arxiv.org/pdf/2203.15802.pdf)
+6. **GOOD: A Graph Out-of-Distribution Benchmark** (NeurIPS 2022) graph OOD benchmark [[paper]](http://arxiv.org/abs/2206.08452)
+7. **Learning Invariant Graph Representations for Out-of-Distribution Generalization** (GIL) graph-level OOD任务。先划分sprious/causal子图，然后拿着spurious子图聚类获得环境。之后用一个VREx目标。 [[paper]](https://openreview.net/forum?id=acKK8MQe2xc)
 
 ### 2021
 
-**DISTRIBUTIONALLY ROBUST SEMI-SUPERVISED LEARNING OVER GRAPHS** (NeurIPS 2021) 对抗地优化DRO的surrogate loss，来获得对wasserstein距离意义下distributionally robust的模型。[[paper]](http://arxiv.org/abs/2110.10582)
+1. **DISTRIBUTIONALLY ROBUST SEMI-SUPERVISED LEARNING OVER GRAPHS** (NeurIPS 2021) 对抗地优化DRO的surrogate loss，来获得对wasserstein距离意义下distributionally robust的模型。[[paper]](http://arxiv.org/abs/2110.10582)
+1. **Shift-Robust GNNs: Overcoming the Limitations of Localized Graph Training Data** (NeurIPS 2021) 一种解决node-level OOD 分类的网络。[[paper]](https://proceedings.neurips.cc/paper/2021/file/eb55e369affa90f77dd7dc9e2cd33b16-Paper.pdf)
+1. **Mixup for Node and Graph Classification** (WWW 2021) 将表示mixup，并将对应的label mixup起来，就能提升泛化。文章提出了node-level和graph-level分别的mixup方案，后续文章验证了node-level的方案要比graph的表现好 [[paper]](https://dl.acm.org/doi/10.1145/3442381.3449796)
+
+### 2020
+
+1. **DROPEDGE: TOWARDS DEEP GRAPH CONVOLUTIONAL NETWORKS ON NODE CLASSIFICATION** (ICLR)
+
+
 
 ## Domain Adaptation
 
