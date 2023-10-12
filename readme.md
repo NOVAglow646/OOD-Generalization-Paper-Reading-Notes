@@ -29,6 +29,7 @@
 19. **Flatness-Aware Minimization for Domain Generalization** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Zhang_Flatness-Aware_Minimization_for_Domain_Generalization_ICCV_2023_paper.html)
 20. **MAP: Towards Balanced Generalization of IID and OOD through Model-Agnostic Adapters** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Zhang_MAP_Towards_Balanced_Generalization_of_IID_and_OOD_through_Model-Agnostic_ICCV_2023_paper.html)
 21. **Learning Diverse Features in Vision Transformers for Improved Generalization** (ICML 2023 Spurious Correlations Workshop) 最小化ViT不同head对于同一token梯度的相似性来鼓励模型的diversity。实验发现ViT的不同token之间有些是spurious，有些是shift-robust的。提出的regularization有助于扩大不同head的gap。 [[paper]](https://arxiv.org/pdf/2210.04206.pdf)
+22. **Towards Understanding Feature Learning in Out-of-Distribution Generalization** (Arxiv 2023 April) ERM已经能够学到inv和sp特征。不好的ERM pretrain会导致IRMv1学不到inv特征。提出了一种迭代学习前一轮没学到的特征的算法FAT。 [[paper]](https://arxiv.org/pdf/2304.11327.pdf)
 
 ### 2022
 
@@ -49,6 +50,8 @@
 15. **ID AND OOD PERFORMANCE ARE SOMETIMES INVERSELY CORRELATED ON REAL-WORLD DATASETS** (Arxiv 2022) 发现了之前工作中忽略的OOD和ID accuray呈反相关的情况（文章claim这是由于diversity-inducing method不够多、不同模型的表现在同一training epoch是不同的而不应该混在一起、不是所有的pretrain seed都会出现而引起） [[https://arxiv.org/pdf/2209.00613.pdf]]
 16. **Agreement-on-the-Line: Predicting the Performance of Neural Networks under Distribution Shift** (NeurIPS 2022) 在可以获取OOD unlabelled data的情况下，发现ID和OOD accuracy有强正相关 $\leftrightarrow$ ID和OOD的agreement强正相关 [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/file/7a8d388b7a17df480856dff1cc079b08-Paper-Conference.pdf)
 17. **When Does Group Invariant Learning Survive Spurious Correlations?** (NeurIPS 2022) 指出了group invariant learning必须满足的两个准则
+18. **Evading the Simplicity Bias: Training a Diverse Set of Models Discovers Solutions with Superior OOD Generalization** (CVPR 2022) 主张使用多个分类器，并鼓励这些分类器输出对输入特征的梯度差异尽量大，以得到diverse的模型。之后依赖于OOD validation 选出一个最好的模型作为最终测试的模型。 [[paper]](https://ieeexplore.ieee.org/document/9878716/) 
+19. **Rich Feature Construction for the Optimization-Generalization Dilemma** (ICML 2022)  [[paper]](https://proceedings.mlr.press/v162/zhang22u/zhang22u.pdf)
 
 ### 2021
 
@@ -78,9 +81,11 @@
 
 1. **Domain-Adversarial Training of Neural Networks** (2016) 提出DANN，训练domain label判别器来促使特征提取器学习到domain-invariant的特征 [[paper]](https://www.jmlr.org/papers/volume17/15-239/15-239.pdf)
 
-2. **In Search of Lost Domain Generalization** (ICLR2021) Domainbed benchmark [[paper]](https://arxiv.org/abs/2007.01434)
+2. **In Search of Lost Domain Generalization** (ICLR 2021) Domainbed benchmark [[paper]](https://arxiv.org/abs/2007.01434)
 
 3. **Invariant Risk Minimization** (2019) IRM 注意：IRM的泛化误差bound中，X是通过虚假特征和不变特征concatenate再经过线性变换得来的，很strict [[paper]](https://arxiv.org/abs/1907.02893)
+
+4. **Self-Challenging Improves Cross-Domain Generalization** (Arxiv 2020) RSC 
 
 
 
