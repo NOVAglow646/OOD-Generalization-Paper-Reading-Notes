@@ -1,3 +1,9 @@
+## Preface
+
+本仓库记录关于OOD Generalization/Domain Generlization/Domain Adaptation等topic的文章。笔者看过的文章会至少用一句话概括内容，有些还会有notes。只有标题的就是笔者还没看过的，只是先存档到这里。
+
+
+
 ## OOD Generalization
 
 ### 2023
@@ -22,7 +28,7 @@
 18. **Understanding Hessian Alignment for Domain Generalization** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/papers/Hemati_Understanding_Hessian_Alignment_for_Domain_Generalization_ICCV_2023_paper.pdf)
 19. **Flatness-Aware Minimization for Domain Generalization** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Zhang_Flatness-Aware_Minimization_for_Domain_Generalization_ICCV_2023_paper.html)
 20. **MAP: Towards Balanced Generalization of IID and OOD through Model-Agnostic Adapters** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Zhang_MAP_Towards_Balanced_Generalization_of_IID_and_OOD_through_Model-Agnostic_ICCV_2023_paper.html)
-21. **Learning Diverse Features in Vision Transformers for Improved Generalization** (ICML 2023 Spurious Correlations Workshop) [[paper]](https://arxiv.org/pdf/2210.04206.pdf)
+21. **Learning Diverse Features in Vision Transformers for Improved Generalization** (ICML 2023 Spurious Correlations Workshop) 最小化ViT不同head对于同一token梯度的相似性来鼓励模型的diversity。实验发现ViT的不同token之间有些是spurious，有些是shift-robust的。提出的regularization有助于扩大不同head的gap。 [[paper]](https://arxiv.org/pdf/2210.04206.pdf)
 
 ### 2022
 
@@ -90,7 +96,9 @@
 5. **Modality-Agnostic Debiasing for Single Domain Generalization** (CVPR 2023) [[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Qu_Modality-Agnostic_Debiasing_for_Single_Domain_Generalization_CVPR_2023_paper.html)
 6. **Improving Zero-Shot Generalization for CLIP with Synthesized Prompts** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Wang_Improving_Zero-Shot_Generalization_for_CLIP_with_Synthesized_Prompts_ICCV_2023_paper.html)
 7. **Global Adaptation meets Local Generalization: Unsupervised Domain Adaptation for 3D Human Pose Estimation** (ICCV 2023) [[paper]](https://arxiv.org/abs/2303.16456)
-8. **Bayesian Prompt Learning for Image-Language Model Generalization** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Derakhshani_Bayesian_Prompt_Learning_for_Image-Language_Model_Generalization_ICCV_2023_paper.html)
+8. **Bayesian Prompt Learning for Image-Language Model Generalization** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Derakhshani_Bayesian_Prompt_Learning_for_Image-Language_Model_Generalization_ICCV_2023_paper.html) 
+
+
 
 ## Graph OOD Generalization
 
@@ -131,8 +139,6 @@
 
 1. **Diffusion-based Target Sampler for Unsupervised Domain Adaptation** 用diffusion model生成和目标域特征一致的样本来实现DA (Arxiv 2023) [[paper]](https://arxiv.org/pdf/2303.12724.pdf)
 
-   
-
 ### 2019
 
 1. **On Learning Invariant Representations for Domain Adaptation** (ICML2019) 经典之作，指出了学习不变表示的做法的问题：在源域和目标域的label的边缘分布 $p(Y)$ 的差距较大时，对齐源域和目标域不变表示+最小化源域误差的做法会导致目标域误差变大 [[paper]](http://proceedings.mlr.press/v97/zhao19a/zhao19a.pdf) [[notes]](./all_notes/On-Learning-Invariant-Representations-forDA.md)
@@ -149,7 +155,7 @@
 
 
 
-## Large Language Models
+## Large Models
 
 ### 2022
 
