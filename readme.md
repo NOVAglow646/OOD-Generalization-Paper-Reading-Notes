@@ -1,6 +1,6 @@
 ## Preface
 
-本仓库记录关于OOD Generalization/Domain Generlization/Domain Adaptation等topic的文章。笔者看过的文章会至少用一句话概括内容，有些还会有notes。只有标题的就是笔者还没看过的，只是先存档到这里。
+本仓库记录关于OOD Generalization/Domain Generlization/Domain Adaptation/Causality等topic的文章。看过的文章会至少用一句话概括内容，有些还会有notes。只有标题的就是还没看过的，只是先存档到这里。
 
 
 
