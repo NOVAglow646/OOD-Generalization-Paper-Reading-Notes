@@ -51,7 +51,7 @@
 16. **Agreement-on-the-Line: Predicting the Performance of Neural Networks under Distribution Shift** (NeurIPS 2022) 在可以获取OOD unlabelled data的情况下，发现ID和OOD accuracy有强正相关 $\leftrightarrow$ ID和OOD的agreement强正相关 [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/file/7a8d388b7a17df480856dff1cc079b08-Paper-Conference.pdf)
 17. **When Does Group Invariant Learning Survive Spurious Correlations?** (NeurIPS 2022) 指出了group invariant learning必须满足的两个准则
 18. **Evading the Simplicity Bias: Training a Diverse Set of Models Discovers Solutions with Superior OOD Generalization** (CVPR 2022) 主张使用多个分类器，并鼓励这些分类器输出对输入特征的梯度差异尽量大，以得到diverse的模型。之后依赖于OOD validation 选出一个最好的模型作为最终测试的模型。 [[paper]](https://ieeexplore.ieee.org/document/9878716/) 
-19. **Rich Feature Construction for the Optimization-Generalization Dilemma** (ICML 2022)  [[paper]](https://proceedings.mlr.press/v162/zhang22u/zhang22u.pdf)
+19. **Rich Feature Construction for the Optimization-Generalization Dilemma** (ICML 2022) ERM pre-train对于提升OOD objectivve的性能很关键 [[paper]](https://proceedings.mlr.press/v162/zhang22u/zhang22u.pdf)
 
 ### 2021
 
@@ -172,6 +172,14 @@
 ### 2021
 
 **LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS** 将对模型权重矩阵的更新限制为低秩矩阵乘积$BA$的形式，极大减少了pre-trained model迁移到新任务的代价（不用fine-tune所有参数） [[paper]](https://arxiv.org/abs/2106.09685)
+
+
+
+## Causality
+
+1. **Causal Confusion in Imitation Learning** (NeurIPS 2019) 解决imitation learning中的distribution shift问题（解决场景比较像OOD generalization中的correlation shift）。imitation learning：给出observation $X^t$和expert actions $A^t$，希望学出$\pi:X^t\rightarrow A^t$。本文的一个有趣的发现是：观测到太多的（历史）信息会影响泛化性能。[[paper]](https://proceedings.neurips.cc/paper_files/paper/2019/hash/947018640bf36a2bb609d3557a285329-Abstract.html)
+2. **Deep Latent-Variable Models** (NeurIPS 2017) 提出了一种VAE来实现存在unobserved confounder时的interventional probability的计算 [[paper]](https://proceedings.neurips.cc/paper/2017/hash/94b5bde6de888ddf9cde6748ad2523d1-Abstract.html)
+3. **Fairness in Decision-Making The Causal Explanation Formula** (AAAI 2018) 提出了一种非参数画的counterfactual probability的计算方法，所提出的三种指标DE IE SE分别detect三种discrimination path（从intervention到outcome的path）是否存在，并证明了total variation能够被这三个量表示 [[paper]](https://ojs.aaai.org/index.php/AAAI/article/view/11564)
 
 
 
