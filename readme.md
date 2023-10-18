@@ -32,6 +32,7 @@
 20. **MAP: Towards Balanced Generalization of IID and OOD through Model-Agnostic Adapters** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Zhang_MAP_Towards_Balanced_Generalization_of_IID_and_OOD_through_Model-Agnostic_ICCV_2023_paper.html)
 21. **Learning Diverse Features in Vision Transformers for Improved Generalization** (ICML 2023 Spurious Correlations Workshop) 最小化ViT不同head对于同一token梯度的相似性来鼓励模型的diversity。实验发现ViT的不同token之间有些是spurious，有些是shift-robust的。提出的regularization有助于扩大不同head的gap。 [[paper]](https://arxiv.org/pdf/2210.04206.pdf)
 22. **Towards Understanding Feature Learning in Out-of-Distribution Generalization** (Arxiv 2023 April) ERM已经能够学到inv和sp特征。不好的ERM pretrain会导致IRMv1学不到inv特征。提出了一种迭代学习前一轮没学到的特征的算法FAT。 [[paper]](https://arxiv.org/pdf/2304.11327.pdf)
+23. **Diversify and Disambiguate: Learning From Underspecified Data** (ICLR 2023) 很像CVPR2022 Evading the Simplicity Bias: Training a Diverse Set of Models Discovers Solutions With Superior OOD Generalization的做法：同一个backbone（feature extractor）训练很多head，加正则鼓励这些head的不同，然后借助oracle信息来选出一个头（本文是用一个所谓的最informative的测试子集来选，CVPR那篇是用一个ood validation set来选）。[[paper]](http://arxiv.org/abs/2202.03418)
 
 
 ### 2022
