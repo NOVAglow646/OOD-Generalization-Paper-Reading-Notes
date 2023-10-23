@@ -56,6 +56,8 @@
 17. **When Does Group Invariant Learning Survive Spurious Correlations?** (NeurIPS 2022) 指出了group invariant learning必须满足的两个准则
 18. **Evading the Simplicity Bias: Training a Diverse Set of Models Discovers Solutions with Superior OOD Generalization** (CVPR 2022) 主张使用多个分类器，并鼓励这些分类器输出对输入特征的梯度差异尽量大，以得到diverse的模型。之后依赖于OOD validation 选出一个最好的模型作为最终测试的模型。 [[paper]](https://ieeexplore.ieee.org/document/9878716/) 
 19. **Rich Feature Construction for the Optimization-Generalization Dilemma** (ICML 2022) ERM pre-train对于提升OOD objectivve的性能很关键 [[paper]](https://proceedings.mlr.press/v162/zhang22u/zhang22u.pdf)
+20. **Diverse Weight Averaging for Out-of-Distribution Generalization** (DiWA) (NeurIPS 2022) ensembling，平均不同超参的模型 [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/file/46108d807b50ad4144eb353b5d0e8851-Paper-Conference.pdf)
+21. **Ensemble of Averages: Improving Model Selection and Boosting Performance in Domain Generalization** (EoA) (NeurIPS 2022) 先对每个模型做沿训练轨迹的moving average（不同epoch），再对这些moving average得到的模型做ensembling（不同超参）。具体做法：simply combines all checkpoints uniformly starting from batch 100 until the end of training [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/file/372cb7805eaccb2b7eed641271a30eec-Paper-Conference.pdf)
 
 ### 2021
 
@@ -66,8 +68,9 @@
 5. **Exploiting Domain-Specifific Features to Enhance Domain Generalization** (NeurIPS 2021) 使用了很多trick：从information bottleneck的角度证明了domain-specific feature对泛化也是有帮助的；提出了一种基于最小化domain-invariant feature和domain-specific feature之间协方差矩阵的解耦；提出通过meta learning来利用domain-specific feature的泛化能力。[[paper]](https://arxiv.org/abs/2110.09410) [[notes]](./all_notes/disen1.md)
 6. **Towards a Theoretical Framework of Out-of-Distribution Generalization** (NeurIPS 2021) 通过定义了conditioned on class的表示不变性，以及表示的informativeness，并据此定义了什么是可学习的OOD问题，推导出了OOD泛化误差上界可以被这两个量表示 [[paper]](https://proceedings.neurips.cc/paper/2021/hash/c5c1cb0bebd56ae38817b251ad72bedb-Abstract.html) 
 7. **Quantifying and Improving Transferability in Domain Generalization** (NeurIPS 2021)  提出了基于给定假设族的域间可迁移性的指标（越小越容易迁移/泛化），并提出了一个min-max优化过程来提升迁移性（有理论保证） [[paper]](https://arxiv.org/abs/2106.03632)
-8. **SWAD: Domain Generalization by Seeking Flat Minima** (NeurIPS 2021) 提出了SWAD，并从理论上证明了flat的loss landscape对OOD泛化有帮助 [[paper]](https://arxiv.org/pdf/2102.08604.pdf)
+8. **SWAD: Domain Generalization by Seeking Flat Minima** (NeurIPS 2021) 提出了SWAD（平均同一模型的不同epoch的参数），并从理论上证明了flat的loss landscape对OOD泛化有帮助 [[paper]](https://arxiv.org/pdf/2102.08604.pdf)
 9. **Domain Generalization Using Causal Matching** (ICML 2021) 对齐不同环境的同一类别的表示来学习不变特征。[[paper]](http://arxiv.org/abs/2006.07500)
+10. **Invariance Principle Meets Information Bottleneck for Out-of-Distribution Generalization** (Arxiv 2021) 提出了IB-IRM，即加了一个最小化模型表示的熵的目标。本文的一个核心观察是：当Y和spurious feature没有关联（本文称作FIIF，fully informative invariant features，对应于covariate shift的情况）时，普通IRM会失效；在文中构建的FIIF example下，只使用inv feature或只使用sp feature都会导致表示的熵比同时使用inv和sp feature的表示的熵更低，因此IB的目标会导致只使用inv或只使用sp的解，在此基础上最小化分类loss，就能学到仅依赖于inv的解。 [[paper]](http://arxiv.org/abs/2106.06607) [[notes]](./all_notes/IB-IRM.md)
 
 ### 2020
 
@@ -81,14 +84,13 @@
 
 4. **Adversarial Examples Improve Image Recognition** (NeurIPS 2020)  Advprop [[paper]](https://openaccess.thecvf.com/content_CVPR_2020/html/Xie_Adversarial_Examples_Improve_Image_Recognition_CVPR_2020_paper.html)
 
+5. **Improving out-of-distribution generalization via multi-task self-supervised pretraining** (Arxiv 2020) SSL pretraining tasks for OOD [[paper]](http://arxiv.org/abs/2003.13525)
+
 ### 经典文章
 
 1. **Domain-Adversarial Training of Neural Networks** (2016) 提出DANN，训练domain label判别器来促使特征提取器学习到domain-invariant的特征 [[paper]](https://www.jmlr.org/papers/volume17/15-239/15-239.pdf)
-
 2. **In Search of Lost Domain Generalization** (ICLR 2021) Domainbed benchmark [[paper]](https://arxiv.org/abs/2007.01434)
-
 3. **Invariant Risk Minimization** (2019) IRM 注意：IRM的泛化误差bound中，X是通过虚假特征和不变特征concatenate再经过线性变换得来的，很strict [[paper]](https://arxiv.org/abs/1907.02893)
-
 4. **Self-Challenging Improves Cross-Domain Generalization** (Arxiv 2020) RSC 
 
 
