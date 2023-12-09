@@ -11,28 +11,54 @@
 ### 2023
 
 1. **FREE LUNCH FOR DOMAIN ADVERSARIAL TRAINING: ENVIRONMENT LABEL SMOOTHING** (ICLR2023) 使用简单的domain label smoothing方法来解决DANN训练不稳定的问题，给出了丰富的理论支持 [[paper]](https://arxiv.org/abs/2302.00194)[[论文分享会slides]](./all_notes/2023.2.17domain_adversarial_training_with_ELS.pdf)
+
 2. **Generalizability of Adversarial Robustness Under Distribution Shifts** (AAAI2023) AT有助于Domain Adaptation，但是在Domain Generalization setting下不如正常模型 [[paper]](https://arxiv.org/abs/2209.15042)
+
 3. **WHAT IS MISSING IN IRM TRAINING AND EVALUATION? CHALLENGES AND SOLUTIONS** (ICLR2023) 指出large-batch会使得各IRM方法的结果不准，small-batch的效果足以匹敌基于large-batch的优化算法。指出了CMNIST只测-90%是不完善的。基于IRM-GAME提出了BLOC-IRM，发现显示地引入per-environment stationary正则项能缓解各domain分类器一致的这个约束带来的各环境分类器次优的问题。[[paper]](https://openreview.net/forum?id=MjsDeTcDEy)
+
 4. **Aggregation of Disentanglement: Reconsidering Domain Variations in Domain Generalization** (arxiv2023) 使用contrastive learning来拉近统一domain数据的表示、推远不同domain数据的表示（文章claim自己是首个在contrastive learning for DG中考虑不同domain的），同时提出所谓的domain-specific feature也有助于泛化（但是文章的实现算法貌似没有显式的解耦invariant/variant feature的过程，也没有显示地构建domain-specific feature）[[paper]](https://arxiv.org/abs/2302.02350)
+
 5. **Domain Generalization Emerges from Dreaming** (arxiv2023) 先通过类似AdaIN的方法生成风格迁移的图像 $x'$，再minimize原始图像 $x$ 和 $x'$的prediction的差距。性能甚至可以超过SWAD。[[paper]](https://arxiv.org/pdf/2302.00980.pdf)
+
 6. **BREAKING CORRELATION SHIFT VIA CONDITIONAL INVARIANT REGULARIZER** (ICLR2023) 证明了对于correlation shift，在给定y时，若网络输出 $f(X)$ 独立于spurious feature $Z$ ，则可保证OOD [[paper]](https://arxiv.org/pdf/2207.06687.pdf)
+
 7. **ASSESSING MODEL OUT-OF-DISTRIBUTION GENERALIZATION WITH SOFTMAX PREDICTION PROBABILITY BASELINES AND A CORRELATION METHOD** (ICLR 2023 rejected) 提出了新的OOD metric，鼓励：①预测的confident高 ②预测具有多样性（避免所有样本被预测为同一个类）。因为被审稿人喷缺乏理论依据而被拒。[[openreview] ](https://openreview.net/forum?id=1maXoEyeqx)
+
 8. **MODELING THE DATA-GENERATING PROCESS IS NECESSARY FOR OUT-OF-DISTRIBUTION GENERALIZATION** (ICLR 2023 top 25%) 用统一的causal graph来描述correlation shift和diversity shift，提出了multi-shift的问题，并证明了学到的表示必须满足由causal graph所导出的条件独立性条件是保证OOD泛化的必要条件。 [[paper]](https://openreview.net/forum?id=uyqks-LILZX) [[论文分享会slides]](./all_notes/2023.3.15[ICLR2023]CACM.pdf)
+
 9. **Domain Generalization via Nuclear Norm Regularization** (Arxiv 2023) 认为引入对 $\phi(x)$ 的低秩constraint有助于解耦不变特征和环境特征 [[paper]](https://arxiv.org/pdf/2303.07527.pdf)
+
 10. **REVISITING ADAPTERS WITH ADVERSARIAL TRAINING** 发现AdvProp中为clean和adv样本分别准备BN层不是必须的，关键在于共享参数+domain adaptator (ICLR 2023) [[paper]](https://openreview.net/forum?id=HPdxC1THU8T)
+
 11. **UNDERSTANDING OUT-OF-DISTRIBUTION ACCURACIES THROUGH QUANTIFYING DIFFICULTY OF TEST SAMPLES**  (Arxiv 2023) 使用entropy based confusion score来衡量样本的difficulty，发现OOD数据confusion score更高（模型预测的熵更高） [[paper]](https://arxiv.org/pdf/2203.15100.pdf)
+
 12. **Effective Robustness against Natural Distribution Shifts for Models with Different Training Data** (Arxiv 2023) [[paper]](https://arxiv.org/pdf/2302.01381.pdf)
+
 13. **Sharpness-Aware Gradient Matching for Domain Generalization** (CVPR 2023) [[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Wang_Sharpness-Aware_Gradient_Matching_for_Domain_Generalization_CVPR_2023_paper.html)
+
 14. **Improved Test-Time Adaptation for Domain Generalization** (CVPR 2023) [[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Chen_Improved_Test-Time_Adaptation_for_Domain_Generalization_CVPR_2023_paper.html)
+
 15. **Domain Generalization Guided by Gradient Signal to Noise Ratio of Parameters** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Michalkiewicz_Domain_Generalization_Guided_by_Gradient_Signal_to_Noise_Ratio_of_ICCV_2023_paper.html)
+
 16. **Cross Contrasting Feature Perturbation for Domain Generalization** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Li_Cross_Contrasting_Feature_Perturbation_for_Domain_Generalization_ICCV_2023_paper.html)
-17. **A Sentence Speaks a Thousand Images: Domain Generalization through Distilling CLIP with Language Guidance** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Huang_A_Sentence_Speaks_a_Thousand_Images_Domain_Generalization_through_Distilling_ICCV_2023_paper.html)
+
+17. **A Sentence Speaks a Thousand Images: Domain Generalization through Distilling CLIP with Language Guidance** (ICCV 2023) 将CLIP的language encoder输出的embedding作为"generic text representation"，然后让student（visual model）的表示去对齐teacher（CLIP）的text representation。同时对齐student和teacher的预测logit。【insight 1】recent work发现基于环境划分的方法不那么work，因为真实世界的环境划分不明确 【insight 2】从优化难度角度说明anchor sample在对齐时的作用 [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Huang_A_Sentence_Speaks_a_Thousand_Images_Domain_Generalization_through_Distilling_ICCV_2023_paper.html)
+
 18. **Understanding Hessian Alignment for Domain Generalization** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/papers/Hemati_Understanding_Hessian_Alignment_for_Domain_Generalization_ICCV_2023_paper.pdf)
+
 19. **Flatness-Aware Minimization for Domain Generalization** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Zhang_Flatness-Aware_Minimization_for_Domain_Generalization_ICCV_2023_paper.html)
+
 20. **MAP: Towards Balanced Generalization of IID and OOD through Model-Agnostic Adapters** (ICCV 2023) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Zhang_MAP_Towards_Balanced_Generalization_of_IID_and_OOD_through_Model-Agnostic_ICCV_2023_paper.html)
+
 21. **Learning Diverse Features in Vision Transformers for Improved Generalization** (ICML 2023 Spurious Correlations Workshop) 最小化ViT不同head对于同一token梯度的相似性来鼓励模型的diversity。实验发现ViT的不同token之间有些是spurious，有些是shift-robust的。提出的regularization有助于扩大不同head的gap。 [[paper]](https://arxiv.org/pdf/2210.04206.pdf)
+
 22. **Towards Understanding Feature Learning in Out-of-Distribution Generalization** (Arxiv 2023 April) ERM已经能够学到inv和sp特征。不好的ERM pretrain会导致IRMv1学不到inv特征。提出了一种迭代学习前一轮没学到的特征的算法FAT。 [[paper]](https://arxiv.org/pdf/2304.11327.pdf)
+
 23. **Diversify and Disambiguate: Learning From Underspecified Data** (ICLR 2023) 很像CVPR2022 Evading the Simplicity Bias: Training a Diverse Set of Models Discovers Solutions With Superior OOD Generalization的做法：同一个backbone（feature extractor）训练很多head，加正则鼓励这些head的不同，然后借助oracle信息来选出一个头（本文是用一个所谓的最informative的测试子集来选，CVPR那篇是用一个ood validation set来选）。[[paper]](http://arxiv.org/abs/2202.03418)
+
+24. **SimMMDG: A Simple and Effective Framework for Multi-modal Domain Generalization** (NeurIPS 2023) 多模态DG，将各模态的特征分为不同模态share的部分以及各个模态specific的部分，拉近同一class的不同模态shared部分的特征，推远share部分的特征和specific部分的特征。[[paper]](https://openreview.net/forum?id=RiSMijlsLT)
+
+    
 
 
 ### 2022
@@ -58,6 +84,7 @@
 19. **Rich Feature Construction for the Optimization-Generalization Dilemma** (ICML 2022) ERM pre-train对于提升OOD objectivve的性能很关键 [[paper]](https://proceedings.mlr.press/v162/zhang22u/zhang22u.pdf)
 20. **Diverse Weight Averaging for Out-of-Distribution Generalization** (DiWA) (NeurIPS 2022) ensembling，平均不同超参的模型 [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/file/46108d807b50ad4144eb353b5d0e8851-Paper-Conference.pdf)
 21. **Ensemble of Averages: Improving Model Selection and Boosting Performance in Domain Generalization** (EoA) (NeurIPS 2022) 先对每个模型做沿训练轨迹的moving average（不同epoch），再对这些moving average得到的模型做ensembling（不同超参）。具体做法：simply combines all checkpoints uniformly starting from batch 100 until the end of training [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/file/372cb7805eaccb2b7eed641271a30eec-Paper-Conference.pdf)
+22. **Model Agnostic Sample Reweighting for Out-of-Distribution Learning** (MAPLE) (ICML 2022) 提出了一个迭代进行的bilevel optimization过程：(1)优化任意的一个OOD loss更新模型参数$\theta^*$ (2)在更新得到的$\theta^*$下优化ERM loss，更新weight $w$
 
 ### 2021
 
@@ -71,6 +98,7 @@
 8. **SWAD: Domain Generalization by Seeking Flat Minima** (NeurIPS 2021) 提出了SWAD（平均同一模型的不同epoch的参数），并从理论上证明了flat的loss landscape对OOD泛化有帮助 [[paper]](https://arxiv.org/pdf/2102.08604.pdf)
 9. **Domain Generalization Using Causal Matching** (ICML 2021) 对齐不同环境的同一类别的表示来学习不变特征。[[paper]](http://arxiv.org/abs/2006.07500)
 10. **Invariance Principle Meets Information Bottleneck for Out-of-Distribution Generalization** (Arxiv 2021) 提出了IB-IRM，即加了一个最小化模型表示的熵的目标。本文的一个核心观察是：当Y和spurious feature没有关联（本文称作FIIF，fully informative invariant features，对应于covariate shift的情况）时，普通IRM会失效；在文中构建的FIIF example下，只使用inv feature或只使用sp feature都会导致表示的熵比同时使用inv和sp feature的表示的熵更低，因此IB的目标会导致只使用inv或只使用sp的解，在此基础上最小化分类loss，就能学到仅依赖于inv的解。 [[paper]](http://arxiv.org/abs/2106.06607) [[notes]](./all_notes/IB-IRM.md)
+11. 
 
 ### 2020
 
@@ -92,6 +120,7 @@
 2. **In Search of Lost Domain Generalization** (ICLR 2021) Domainbed benchmark [[paper]](https://arxiv.org/abs/2007.01434)
 3. **Invariant Risk Minimization** (2019) IRM 注意：IRM的泛化误差bound中，X是通过虚假特征和不变特征concatenate再经过线性变换得来的，很strict [[paper]](https://arxiv.org/abs/1907.02893)
 4. **Self-Challenging Improves Cross-Domain Generalization** (Arxiv 2020) RSC 
+5. **UNDERSTANDING THE FAILURE MODES OF OUT-OFDISTRIBUTION GENERALIZATION** (ICLR 2021) 刻画了ERM OOD泛化失败的两种情况：geometric skew和statistical skew。直观理解：geometric skew是由于max-margin classifier由于major part的存在导致为了维持最大margin，不得不使用spurious feature；statistical skew纯粹是由于分析$\frac{w_{\text{sp}(t)}}{w_{\text{inv}(t)}}$的收敛，发现该比值的lower bound会随着spurious correlation p的增加而单调上升。 [[paper]](http://arxiv.org/abs/2010.15775)
 
 
 
@@ -121,6 +150,7 @@
 4.  **Joint Learning of Label and Environment Causal Independence for Graph Out-of-Distribution Generalization (LECI)** (Arxiv 2023) **[FIIF&PIIF]** 需要环境标签。优化两个目标：(1)让子图生成器产生分类误差尽量大的spurious subgraph，并对抗地训练一个用spurious graph做预测的分类器 (2)让子图生成器产生无法判别环境的causal graph，并对抗地训练一个环境判别器 [[paper]](https://arxiv.org/abs/2306.01103)
 5.  **RETHINKING INVARIANT GRAPH REPRESENTATION LEARNING WITHOUT ENVIRONMENT PARTITIONS (GALA)** (ICLR 2023 Domain Generalization Workshop) 改进版CIGA。讲CIGA的causal contrastive loss改为对齐spurious correlation主导和invariant correlation主导的两部分子集，不同关联主导的数据通过一个额外的ERM模型获得（ERM预测的label不同，就认为是它们属于由不同的关联主导的part） [[paper]](https://openreview.net/forum?id=bjw5jqGtDy)
 6.  **FLOOD: A Flexible Invariant Learning Framework for Out-of-Distribution Generalization on Graphs** (KDD 2023) node-level OOD任务。通过已有的图augmentation方法产生一系列增强环境，再使用如VREx的不变学习目标；同时加一个Bootstrapped Representation Learning目标。 [[paper]](https://dl.acm.org/doi/10.1145/3580305.3599355)
+7.  **Causality and Independence Enhancement for Biased Node Classification** (CIKM 2023) 把causal feature看成do(c)，然后假设s是c的backdoor，基于此模型来用一个经验性方法建模p(Y|C,S)从而学出causal feature/spurious feature（通过在node feature上加2个MLP实现）。感觉causal graph的假设太强。并且只能解决concept shift。 [[paper]](https://dl.acm.org/doi/10.1145/3583780.3614804)
 
 ###  2022
 
@@ -181,11 +211,36 @@
 
 
 
+## Neural Collapse
+
+### 2023
+
+1. **Neural Collapse: A Review on Modelling Principles and Generalization** (TMLR 2023)  [[paper]](http://arxiv.org/abs/2206.04041)
+
+### 2022
+
+1. **Limitations of Neural Collapse for Understanding Generalization in Deep Learning** (Arxiv 2022) [[paper]](http://arxiv.org/abs/2202.08384)
+
+
+
+## Feature Collapse
+
+1. **Feature Collapse** (Arxiv 2023)
+
+
+
 ## Causality
 
 1. **Causal Confusion in Imitation Learning** (NeurIPS 2019) 解决imitation learning中的distribution shift问题（解决场景比较像OOD generalization中的correlation shift）。imitation learning：给出observation $X^t$和expert actions $A^t$，希望学出$\pi:X^t\rightarrow A^t$。本文的一个有趣的发现是：观测到太多的（历史）信息会影响泛化性能。[[paper]](https://proceedings.neurips.cc/paper_files/paper/2019/hash/947018640bf36a2bb609d3557a285329-Abstract.html) [[notes&thinking]](./all_notes/Causality.pdf)
 2. **Deep Latent-Variable Models** (NeurIPS 2017) 提出了一种VAE来实现存在unobserved confounder时的interventional probability的计算 [[paper]](https://proceedings.neurips.cc/paper/2017/hash/94b5bde6de888ddf9cde6748ad2523d1-Abstract.html) [[notes&thinking]](./all_notes/Causality.pdf)
 3. **Fairness in Decision-Making The Causal Explanation Formula** (AAAI 2018) 提出了一种非参数画的counterfactual probability的计算方法，所提出的三种指标DE IE SE分别detect三种discrimination path（从intervention到outcome的path）是否存在，并证明了total variation能够被这三个量表示 [[paper]](https://ojs.aaai.org/index.php/AAAI/article/view/11564) [[notes&thinking]](./all_notes/Causality.pdf)
+
+## Graph Homophily/Heterophily
+
+### 2023
+
+1. **Characterizing Graph Datasets for Node Classification: Homophily–Heterophily Dichotomy and Beyond** 
+2. 
 
 
 
