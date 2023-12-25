@@ -52,11 +52,13 @@
 
 21. **Learning Diverse Features in Vision Transformers for Improved Generalization** (ICML 2023 Spurious Correlations Workshop) 最小化ViT不同head对于同一token梯度的相似性来鼓励模型的diversity。实验发现ViT的不同token之间有些是spurious，有些是shift-robust的。提出的regularization有助于扩大不同head的gap。 [[paper]](https://arxiv.org/pdf/2210.04206.pdf)
 
-22. **Towards Understanding Feature Learning in Out-of-Distribution Generalization** (Arxiv 2023 April) ERM已经能够学到inv和sp特征。不好的ERM pretrain会导致IRMv1学不到inv特征。提出了一种迭代学习前一轮没学到的特征的算法FAT。 [[paper]](https://arxiv.org/pdf/2304.11327.pdf)
+22. **Towards Understanding Feature Learning in Out-of-Distribution Generalization** (NeulPS 2023) ERM已经能够学到inv和sp特征。不好的ERM pretrain会导致IRMv1学不到inv特征。提出了一种迭代学习前一轮没学到的特征的算法FAT。 [[paper]](https://arxiv.org/pdf/2304.11327.pdf)
 
 23. **Diversify and Disambiguate: Learning From Underspecified Data** (ICLR 2023) 很像CVPR2022 Evading the Simplicity Bias: Training a Diverse Set of Models Discovers Solutions With Superior OOD Generalization的做法：同一个backbone（feature extractor）训练很多head，加正则鼓励这些head的不同，然后借助oracle信息来选出一个头（本文是用一个所谓的最informative的测试子集来选，CVPR那篇是用一个ood validation set来选）。[[paper]](http://arxiv.org/abs/2202.03418)
 
 24. **SimMMDG: A Simple and Effective Framework for Multi-modal Domain Generalization** (NeurIPS 2023) 多模态DG，将各模态的特征分为不同模态share的部分以及各个模态specific的部分，拉近同一class的不同模态shared部分的特征，推远share部分的特征和specific部分的特征。[[paper]](https://openreview.net/forum?id=RiSMijlsLT)
+
+25. **PromptStyler: Prompt-driven Style Generation for Source-free Domain Generalization** (ICCV 2023) 先训练K个用于生成style word embedding（多样性+保持语义），然后把它们和N个类别词embedding结合，喂给CLIPtext生成K*N个style-content的text feature。之后拿这些feature训练一个linear classifier。推断时把这个classifier接到CLIP image encoder上（**因为在joint image-text空间中，存在cross-modal transferability phenomenon**）。 [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Cho_PromptStyler_Prompt-driven_Style_Generation_for_Source-free_Domain_Generalization_ICCV_2023_paper.html)
 
     
 
@@ -85,6 +87,7 @@
 20. **Diverse Weight Averaging for Out-of-Distribution Generalization** (DiWA) (NeurIPS 2022) ensembling，平均不同超参的模型 [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/file/46108d807b50ad4144eb353b5d0e8851-Paper-Conference.pdf)
 21. **Ensemble of Averages: Improving Model Selection and Boosting Performance in Domain Generalization** (EoA) (NeurIPS 2022) 先对每个模型做沿训练轨迹的moving average（不同epoch），再对这些moving average得到的模型做ensembling（不同超参）。具体做法：simply combines all checkpoints uniformly starting from batch 100 until the end of training [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/file/372cb7805eaccb2b7eed641271a30eec-Paper-Conference.pdf)
 22. **Model Agnostic Sample Reweighting for Out-of-Distribution Learning** (MAPLE) (ICML 2022) 提出了一个迭代进行的bilevel optimization过程：(1)优化任意的一个OOD loss更新模型参数$\theta^*$ (2)在更新得到的$\theta^*$下优化ERM loss，更新weight $w$
+23. 
 
 ### 2021
 
@@ -248,4 +251,25 @@
 
 1. **On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima** (ICLR2017) large-batch会导致模型更容易进入尖锐的极小值点，而尖锐的极小值点会不利于泛化 [[paper]](https://arxiv.org/abs/1609.04836)
 
-   
+
+
+
+## Prompt Learning
+
+### Prompt learning：
+Conditional Prompt Learning for Vision-Language Models, CVPR2022
+MaPLe: Multi-modal Prompt Learning, CVPR2023
+Prompt-aligned Gradient for Prompt Tuning, ICCV2023
+Compound Text-Guided Prompt Tuning via Image-Adaptive Cues, AAAI2024
+MmAP : Multi-modal Alignment Prompt for Cross-domain Multi-task Learning, AAAI2024
+
+### For DA:
+
+Domain Adaptation via Prompt Learning, arxiv 2022
+AD-CLIP: Adapting Domains in Prompt Space Using CLIP, ICCV2023
+Multi-Prompt Alignment for Multi-Source Unsupervised Domain Adaptation, NIPS2023
+Prompt-based Distribution Alignment for Unsupervised Domain Adaptation, AAAI2024
+
+### For DG:
+
+StyLIP: Multi-Scale Style-Conditioned Prompt Learning for CLIP-based Domain Generalization, arxiv2023
