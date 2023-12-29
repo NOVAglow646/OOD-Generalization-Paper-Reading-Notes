@@ -60,6 +60,10 @@
 
 25. **PromptStyler: Prompt-driven Style Generation for Source-free Domain Generalization** (ICCV 2023) 先训练K个用于生成style word embedding（多样性+保持语义），然后把它们和N个类别词embedding结合，喂给CLIPtext生成K*N个style-content的text feature。之后拿这些feature训练一个linear classifier。推断时把这个classifier接到CLIP image encoder上（**因为在joint image-text空间中，存在cross-modal transferability phenomenon**）。 [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Cho_PromptStyler_Prompt-driven_Style_Generation_for_Source-free_Domain_Generalization_ICCV_2023_paper.html)
 
+26. **Model Ratatouille: Recycling Diverse Models for Out-of-Distribution Generalization** (ICML 2023) 利用很多在不同任务上fine-tune的同一个预训练模型来提升OOD性能 [[paper]](https://proceedings.mlr.press/v202/rame23a/rame23a.pdf) 
+
+27. **Explore and Exploit the Diverse Knowledge in Model Zoo for Domain Generalization** (ICML 2023) 充分利用多样的预训练模型（不仅仅是利用最强的模型）来提升OOD性能 [[paper]](https://proceedings.mlr.press/v202/chen23m/chen23m.pdf)
+
     
 
 
@@ -124,6 +128,27 @@
 3. **Invariant Risk Minimization** (2019) IRM 注意：IRM的泛化误差bound中，X是通过虚假特征和不变特征concatenate再经过线性变换得来的，很strict [[paper]](https://arxiv.org/abs/1907.02893)
 4. **Self-Challenging Improves Cross-Domain Generalization** (Arxiv 2020) RSC 
 5. **UNDERSTANDING THE FAILURE MODES OF OUT-OFDISTRIBUTION GENERALIZATION** (ICLR 2021) 刻画了ERM OOD泛化失败的两种情况：geometric skew和statistical skew。直观理解：geometric skew是由于max-margin classifier由于major part的存在导致为了维持最大margin，不得不使用spurious feature；statistical skew纯粹是由于分析$\frac{w_{\text{sp}(t)}}{w_{\text{inv}(t)}}$的收敛，发现该比值的lower bound会随着spurious correlation p的增加而单调上升。 [[paper]](http://arxiv.org/abs/2010.15775)
+
+
+
+## OOD/Domain Generalization & Large Models & Multimodal
+
+### 2023
+
+1. **PromptStyler: Prompt-driven Style Generation for Source-free Domain Generalization** (ICCV 2023) 先训练K个用于生成style word embedding（多样性+保持语义），然后把它们和N个类别词embedding结合，喂给CLIPtext生成K*N个style-content的text feature。之后拿这些feature训练一个linear classifier。推断时把这个classifier接到CLIP image encoder上（**因为在joint image-text空间中，存在cross-modal transferability phenomenon**）。 [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Cho_PromptStyler_Prompt-driven_Style_Generation_for_Source-free_Domain_Generalization_ICCV_2023_paper.html)
+2. **SimMMDG: A Simple and Effective Framework for Multi-modal Domain Generalization** (NeurIPS 2023) 多模态DG，将各模态的特征分为不同模态share的部分以及各个模态specific的部分，拉近同一class的不同模态shared部分的特征，推远share部分的特征和specific部分的特征。[[paper]](https://openreview.net/forum?id=RiSMijlsLT)
+3. **A Sentence Speaks a Thousand Images: Domain Generalization through Distilling CLIP with Language Guidance** (ICCV 2023) 将CLIP的language encoder输出的embedding作为"generic text representation"，然后让student（visual model）的表示去对齐teacher（CLIP）的text representation。同时对齐student和teacher的预测logit。【insight 1】recent work发现基于环境划分的方法不那么work，因为真实世界的环境划分不明确 【insight 2】从优化难度角度说明anchor sample在对齐时的作用 [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Huang_A_Sentence_Speaks_a_Thousand_Images_Domain_Generalization_through_Distilling_ICCV_2023_paper.html) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
+4. **Distilling Out-of-Distribution Robustness from Vision-Language Foundation Models** (NIPS 2023) 在用In domain数据生成的Discrete adversarial eaxmple上拿一个CLIP做蒸馏提升就能超过普通的Knowledge Distillation和DAT [[paper]](https://arxiv.org/pdf/2311.01441.pdf) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
+5. **Distilling from Vision-Language Models for Improved OOD Generalization in Vision Tasks** (Arxiv 2023 Oct) 对齐student model经过一个projector后的表示和CLIP的text/image encoder的输出 [[paper]](https://arxiv.org/abs/2310.08255) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
+
+
+
+## OOD/Domain Generalization & Test-time adaptation
+
+### 2023
+
+1. **Align Your Prompts: Test-Time Prompting with Distribution Alignment for Zero-Shot Generalization** [[paper]](https://arxiv.org/pdf/2311.01459.pdf)
+2. 
 
 
 
