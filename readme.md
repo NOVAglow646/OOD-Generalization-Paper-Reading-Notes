@@ -4,6 +4,19 @@
 
 
 
+## OOD/Domain Generalization & Large Models & Multimodal
+
+### 2023
+
+1. **PromptStyler: Prompt-driven Style Generation for Source-free Domain Generalization** (ICCV 2023) 先训练K个用于生成style word embedding（多样性+保持语义），然后把它们和N个类别词embedding结合，喂给CLIPtext生成K*N个style-content的text feature。之后拿这些feature训练一个linear classifier。推断时把这个classifier接到CLIP image encoder上（**因为在joint image-text空间中，存在cross-modal transferability phenomenon**）。 [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Cho_PromptStyler_Prompt-driven_Style_Generation_for_Source-free_Domain_Generalization_ICCV_2023_paper.html)
+2. **SimMMDG: A Simple and Effective Framework for Multi-modal Domain Generalization** (NeurIPS 2023) 多模态DG，将各模态的特征分为不同模态share的部分以及各个模态specific的部分，拉近同一class的不同模态shared部分的特征，推远share部分的特征和specific部分的特征。[[paper]](https://openreview.net/forum?id=RiSMijlsLT)
+3. **A Sentence Speaks a Thousand Images: Domain Generalization through Distilling CLIP with Language Guidance** (ICCV 2023) 将CLIP的language encoder输出的embedding作为"generic text representation"，然后让student（visual model）的表示去对齐teacher（CLIP）的text representation。同时对齐student和teacher的预测logit。【insight 1】recent work发现基于环境划分的方法不那么work，因为真实世界的环境划分不明确 【insight 2】从优化难度角度说明anchor sample在对齐时的作用 [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Huang_A_Sentence_Speaks_a_Thousand_Images_Domain_Generalization_through_Distilling_ICCV_2023_paper.html) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
+4. **Distilling Out-of-Distribution Robustness from Vision-Language Foundation Models** (NIPS 2023) 在用In domain数据生成的Discrete adversarial eaxmple上拿一个CLIP做蒸馏提升就能超过普通的Knowledge Distillation和DAT [[paper]](https://arxiv.org/pdf/2311.01441.pdf) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
+5. **Distilling from Vision-Language Models for Improved OOD Generalization in Vision Tasks** (Arxiv Oct 2023) 对齐student model经过一个projector后的表示和CLIP的text/image encoder的输出 [[paper]](https://arxiv.org/abs/2310.08255) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
+6. **Context-Aware Robust Fine-Tuning** (IJCV Dec 2023) 发现微调会破坏CLIP原有的对于context（虚假特征）zero-shot的分类能力。提出在微调的时候对齐预训练的CLIP预测的context的概率分布和正在被微调的模型预测的context的概率分布 [[paper]](https://link.springer.com/article/10.1007/s11263-023-01951-2) 
+
+
+
 ## OOD Generalization
 ### 2024
 1. **Spurious Feature Diversification Improves Out-of-distribution Generalization** (ICLR 2024 under review) 通过ensemble学更多的spurious feature能“冲淡”它们各自的影响 [[paper]](https://openreview.net/forum?id=d6H4RBi7RH)
@@ -131,15 +144,7 @@
 
 
 
-## OOD/Domain Generalization & Large Models & Multimodal
 
-### 2023
-
-1. **PromptStyler: Prompt-driven Style Generation for Source-free Domain Generalization** (ICCV 2023) 先训练K个用于生成style word embedding（多样性+保持语义），然后把它们和N个类别词embedding结合，喂给CLIPtext生成K*N个style-content的text feature。之后拿这些feature训练一个linear classifier。推断时把这个classifier接到CLIP image encoder上（**因为在joint image-text空间中，存在cross-modal transferability phenomenon**）。 [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Cho_PromptStyler_Prompt-driven_Style_Generation_for_Source-free_Domain_Generalization_ICCV_2023_paper.html)
-2. **SimMMDG: A Simple and Effective Framework for Multi-modal Domain Generalization** (NeurIPS 2023) 多模态DG，将各模态的特征分为不同模态share的部分以及各个模态specific的部分，拉近同一class的不同模态shared部分的特征，推远share部分的特征和specific部分的特征。[[paper]](https://openreview.net/forum?id=RiSMijlsLT)
-3. **A Sentence Speaks a Thousand Images: Domain Generalization through Distilling CLIP with Language Guidance** (ICCV 2023) 将CLIP的language encoder输出的embedding作为"generic text representation"，然后让student（visual model）的表示去对齐teacher（CLIP）的text representation。同时对齐student和teacher的预测logit。【insight 1】recent work发现基于环境划分的方法不那么work，因为真实世界的环境划分不明确 【insight 2】从优化难度角度说明anchor sample在对齐时的作用 [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Huang_A_Sentence_Speaks_a_Thousand_Images_Domain_Generalization_through_Distilling_ICCV_2023_paper.html) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
-4. **Distilling Out-of-Distribution Robustness from Vision-Language Foundation Models** (NIPS 2023) 在用In domain数据生成的Discrete adversarial eaxmple上拿一个CLIP做蒸馏提升就能超过普通的Knowledge Distillation和DAT [[paper]](https://arxiv.org/pdf/2311.01441.pdf) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
-5. **Distilling from Vision-Language Models for Improved OOD Generalization in Vision Tasks** (Arxiv 2023 Oct) 对齐student model经过一个projector后的表示和CLIP的text/image encoder的输出 [[paper]](https://arxiv.org/abs/2310.08255) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
 
 
 
