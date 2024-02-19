@@ -4,6 +4,12 @@
 
 
 
+## Directory
+
+[TOC]
+
+
+
 ## OOD/Domain Generalization & Large Models & Multimodal
 
 ### 2023
@@ -14,12 +20,14 @@
 4. **Distilling Out-of-Distribution Robustness from Vision-Language Foundation Models** (NIPS 2023) 在用In domain数据生成的Discrete adversarial eaxmple上拿一个CLIP做蒸馏提升就能超过普通的Knowledge Distillation和DAT [[paper]](https://arxiv.org/pdf/2311.01441.pdf) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
 5. **Distilling from Vision-Language Models for Improved OOD Generalization in Vision Tasks** (Arxiv Oct 2023) 对齐student model经过一个projector后的表示和CLIP的text/image encoder的输出 [[paper]](https://arxiv.org/abs/2310.08255) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
 6. **Context-Aware Robust Fine-Tuning** (IJCV Dec 2023) 发现微调会破坏CLIP原有的对于context（虚假特征）zero-shot的分类能力。提出在微调的时候对齐预训练的CLIP预测的context的概率分布和正在被微调的模型预测的context的概率分布 [[paper]](https://link.springer.com/article/10.1007/s11263-023-01951-2) 
+7. **ArGue: Attribute-Guided Prompt Tuning for Vision-Language Models **(Arxiv Nov 2023) [[paper]](http://arxiv.org/abs/2311.16494) 本文提出了neg prompt，就是在prompt里加入neg attribute的embedding。在prompt tuning时，希望在使用neg prompt时，预测成任何类别的概率相同，以此来强行消除虚假关联（文中loss式(9)）。使用neg prompt时预测为某一类的概率就是用neg embedding+任何class的embedding和图像表示算相似度。
 
 
 
 ## OOD Generalization
 ### 2024
 1. **Spurious Feature Diversification Improves Out-of-distribution Generalization** (ICLR 2024 under review) 通过ensemble学更多的spurious feature能“冲淡”它们各自的影响 [[paper]](https://openreview.net/forum?id=d6H4RBi7RH)
+1. **Out-Of-Domain Unlabeled Data Improves Generalization** (ICLR 2024 spotlight) [[paper]](https://openreview.net/forum?id=Bo6GpQ3B9a)
 
 ### 2023
 
