@@ -2,7 +2,9 @@
 
 本仓库记录关于OOD Generalization/Domain Generlization/Domain Adaptation/Causality等topic的文章。看过的文章会至少用一句话概括内容，有些还会有notes。只有标题的就是还没看过的，只是先存档到这里。
 
+###  🔥 Updates
 
+- 2024-02-21 接下来将会主要关注LLM/Multi-modal LLMs的generalization。
 
 ## Directory
 
@@ -10,12 +12,19 @@
 
 
 
-## OOD/Domain Generalization & Large Models & Multimodal
+## OOD Generalization & Large Models & Multimodal
+
+### 2024
+
+1. **On the Out-Of-Distribution Generalization of Multimodal Large Language Models** (Arxiv Feb 2024) [[paper]](http://arxiv.org/abs/2402.06599)
+
+
+
+## OOD Generalization using Large Vision-language models
 
 ### 2023
 
 1. **PromptStyler: Prompt-driven Style Generation for Source-free Domain Generalization** (ICCV 2023) 先训练K个用于生成style word embedding（多样性+保持语义），然后把它们和N个类别词embedding结合，喂给CLIPtext生成K*N个style-content的text feature。之后拿这些feature训练一个linear classifier。推断时把这个classifier接到CLIP image encoder上（**因为在joint image-text空间中，存在cross-modal transferability phenomenon**）。 [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Cho_PromptStyler_Prompt-driven_Style_Generation_for_Source-free_Domain_Generalization_ICCV_2023_paper.html)
-2. **SimMMDG: A Simple and Effective Framework for Multi-modal Domain Generalization** (NeurIPS 2023) 多模态DG，将各模态的特征分为不同模态share的部分以及各个模态specific的部分，拉近同一class的不同模态shared部分的特征，推远share部分的特征和specific部分的特征。[[paper]](https://openreview.net/forum?id=RiSMijlsLT)
 3. **A Sentence Speaks a Thousand Images: Domain Generalization through Distilling CLIP with Language Guidance** (ICCV 2023) 将CLIP的language encoder输出的embedding作为"generic text representation"，然后让student（visual model）的表示去对齐teacher（CLIP）的text representation。同时对齐student和teacher的预测logit。【insight 1】recent work发现基于环境划分的方法不那么work，因为真实世界的环境划分不明确 【insight 2】从优化难度角度说明anchor sample在对齐时的作用 [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Huang_A_Sentence_Speaks_a_Thousand_Images_Domain_Generalization_through_Distilling_ICCV_2023_paper.html) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
 4. **Distilling Out-of-Distribution Robustness from Vision-Language Foundation Models** (NIPS 2023) 在用In domain数据生成的Discrete adversarial eaxmple上拿一个CLIP做蒸馏提升就能超过普通的Knowledge Distillation和DAT [[paper]](https://arxiv.org/pdf/2311.01441.pdf) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
 5. **Distilling from Vision-Language Models for Improved OOD Generalization in Vision Tasks** (Arxiv Oct 2023) 对齐student model经过一个projector后的表示和CLIP的text/image encoder的输出 [[paper]](https://arxiv.org/abs/2310.08255) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
@@ -24,7 +33,13 @@
 
 
 
-## OOD Generalization
+## New tasks of OOD Generalization
+
+1. **SimMMDG: A Simple and Effective Framework for Multi-modal Domain Generalization** (NeurIPS 2023) 多模态DG，将各模态的特征分为不同模态share的部分以及各个模态specific的部分，拉近同一class的不同模态shared部分的特征，推远share部分的特征和specific部分的特征。[[paper]](https://openreview.net/forum?id=RiSMijlsLT)
+
+
+
+## OOD Generalization (classic)
 ### 2024
 1. **Spurious Feature Diversification Improves Out-of-distribution Generalization** (ICLR 2024 under review) 通过ensemble学更多的spurious feature能“冲淡”它们各自的影响 [[paper]](https://openreview.net/forum?id=d6H4RBi7RH)
 1. **Out-Of-Domain Unlabeled Data Improves Generalization** (ICLR 2024 spotlight) [[paper]](https://openreview.net/forum?id=Bo6GpQ3B9a)
@@ -237,7 +252,11 @@
 
 
 
-## Large Models
+## LLMs/Large Multi-modal models
+
+### 2024
+
+1. **Model Editing with Canonical Examples** [[paper]](http://arxiv.org/abs/2402.06155) 提出了一个新任务：让模型学习几个特定的文本例子，以实现某些纠正，同时还不能让模型改变很多。
 
 ### 2022
 
@@ -295,19 +314,41 @@
 ## Prompt Learning
 
 ### Prompt learning：
-Conditional Prompt Learning for Vision-Language Models, CVPR2022
-MaPLe: Multi-modal Prompt Learning, CVPR2023
-Prompt-aligned Gradient for Prompt Tuning, ICCV2023
-Compound Text-Guided Prompt Tuning via Image-Adaptive Cues, AAAI2024
-MmAP : Multi-modal Alignment Prompt for Cross-domain Multi-task Learning, AAAI2024
+1. **Conditional Prompt Learning for Vision-Language Models** (CoCoOp, CVPR2022) 将图片特征直接加到context token上，获得sample-wise的prompt，以实现instance的generalization。其实就是希望通过引入图像信息来使得prompt描述得更贴切。不过感觉还是有点怪，因为所有class都加上了同样的可学习prefix，为什么能提高预测为正确类的概率？
+2. MaPLe: Multi-modal Prompt Learning, CVPR2023 
+3. Prompt-aligned Gradient for Prompt Tuning, ICCV2023
+4. Compound Text-Guided Prompt Tuning via Image-Adaptive Cues, AAAI2024
+5. MmAP : Multi-modal Alignment Prompt for Cross-domain Multi-task Learning, AAAI2024
+6. **Improving Zero-Shot Generalization for CLIP with Synthesized Prompts** (ICCV 2023)
 
 ### For DA:
 
-Domain Adaptation via Prompt Learning, arxiv 2022
-AD-CLIP: Adapting Domains in Prompt Space Using CLIP, ICCV2023
-Multi-Prompt Alignment for Multi-Source Unsupervised Domain Adaptation, NIPS2023
-Prompt-based Distribution Alignment for Unsupervised Domain Adaptation, AAAI2024
+1. Domain Adaptation via Prompt Learning, arxiv 2022
+2. AD-CLIP: Adapting Domains in Prompt Space Using CLIP, ICCV2023
+3. Multi-Prompt Alignment for Multi-Source Unsupervised Domain Adaptation, NIPS2023
+4. Prompt-based Distribution Alignment for Unsupervised Domain Adaptation, AAAI2024
 
 ### For DG:
 
-StyLIP: Multi-Scale Style-Conditioned Prompt Learning for CLIP-based Domain Generalization, arxiv2023
+1. StyLIP: Multi-Scale Style-Conditioned Prompt Learning for CLIP-based Domain Generalization, arxiv2023
+
+
+
+
+
+## In-Context Learning
+
+### 2024
+
+1. **Explore Spurious Correlations at the Concept Level in Language Models for Text Classification** (Arxiv Jan 2024) [[paper]](http://arxiv.org/abs/2311.08648) 发现了LLM在文本分类中会依赖的concept-label spurious correlation，提出使用ChatGPT来扩充数据来消除虚假关联。
+2. **Positional Information Matters for Invariant In-Context Learning: A Case Study of Simple Function Classes** (ongoing work) [[paper]](Positional Information Matters for Invariant In-Context Learning: A Case Study of Simple Function Classes) 发现模型对于demonstration的permutation invariance或许是ICL OOD的关键。提出使用相同的positional encoding来提升ICL OOD性能。
+3. **Simple synthetic data reduces sycophancy in large language models** (Arxiv Feb 2024) [[paper]](http://arxiv.org/abs/2308.03958) LLMs会迎合提问者的观点而罔顾事实。提出合成一些用户的观点和正确性无关的新prompt，然后在这些数据上fine-tune来解决sycophancy问题。
+
+
+
+### 2023
+
+1. **Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?** [[paper]](https://arxiv.org/abs/2202.12837) 做了一系列消融实验来对ICL进行解释。主要结论：即使input和label不是一一对应，只要label的分布合理，那么ICL同样能给出较为正确的答案.
+2. **Symbol tuning improves in-context learning in language models** (EMNLP 2023) [[paper]](http://arxiv.org/abs/2305.08298) 将demonstration的label换为无意义的symbol，然后微调，以此强迫模型学习input-label mapping。
+3. **In-context Learning Generalizes, But Not Always Robustly: The Case of Syntax** (Arxiv Nov 2023) [[paper] ](In-context Learning Generalizes, But Not Always Robustly: The Case of Syntax) 本文通过构建一些语法任务来测试模型对于句子结构的理解能力，以及OOD泛化性能。总的说来，LLM还是会用到一些spurious correlation。
+4. 
