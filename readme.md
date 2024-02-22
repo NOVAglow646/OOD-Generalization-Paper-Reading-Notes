@@ -9,7 +9,7 @@
 ## Directory
 
 * [OOD Generalization of (Multimodal) LLMs](#ood-generalization-of-multimodal-LLMs)
-
+* [OOD Generalization using Large Vision-language models](#ood-generalization-using-large-visionlanguage-models)
 
 
 ## OOD Generalization of (Multimodal) LLMs 
