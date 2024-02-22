@@ -8,7 +8,7 @@
 
 ## Directory
 
-* [OOD Generalization of (Multimodal) LLMs](ood-generalization-of-multimodal-LLMs)
+* [OOD Generalization of (Multimodal) LLMs](#ood-generalization-of-multimodal-LLMs)
 
 
 
