@@ -9,7 +9,12 @@
 ## Directory
 
 * [OOD Generalization of (Multimodal) LLMs](#ood-generalization-of-multimodal-LLMs)
-* [OOD Generalization using Large Vision-language models](#ood-generalization-using-large-visionlanguage-models)
+* [OOD Generalization using Large Vision-language models](#ood-generalization-using-large-vision-language-models)
+* [New tasks of OOD Generalization](#new-tasks-of-ood-generalization)
+* [OOD Generalization (classic)](#ood-generalization-classic)
+* [Test-time Adaptation for Generalization](#test-time-adaptation-for-generalization)
+* [Domain Generalization/Adaptation in Down-stream CV/NLP Tasks](#domain-generalizationadaptation-in-down-stream-cvnlp-tasks)
+* [Graph OOD Generalization (graph-level & node-level)](#graph-ood-generalization-graph-level--node-level)
 
 
 ## OOD Generalization of (Multimodal) LLMs 
