@@ -15,6 +15,18 @@
 * [Test-time Adaptation for Generalization](#test-time-adaptation-for-generalization)
 * [Domain Generalization/Adaptation in Down-stream CV/NLP Tasks](#domain-generalizationadaptation-in-down-stream-cvnlp-tasks)
 * [Graph OOD Generalization (graph-level & node-level)](#graph-ood-generalization-graph-level--node-level)
+* [Domain Adaptation](#domain-adaptation)
+* [LLMs/Large Multi-modal models](#llmslarge-multi-modal-models)
+* [Prompt Learning](#prompt-learning)
+* [In-Context Learning](#in-context-learning)
+* [Others](#others)
+    * [Optimization](#optimization) 
+    * [Adversarial Robustness](#adversarial-robustness)
+    * [Neural Collapse](#neural-collapse)
+    * [Feature Collpase](#feature-collapse)
+    * [Causality](#causality)
+    * [Graph Homophily/Heterophily](graph-homophilyheterophily)
+
 
 
 ## OOD Generalization of (Multimodal) LLMs 
@@ -255,12 +267,7 @@
 
 
 
-## Adversarial Robustness
 
-### 2022
-
-1. **The Dimpled Manifold Model of Adversarial Examples in Machine Learning** (arxiv 2022) 从manifold角度研究网络训练的过程以及AT的行为。发现训练DNN大概分为两个过程：①使决策边界由随机快速分布到数据的manifold附近 ②通过在决策边界中产生凹凸，来使决策边界移动到样本的正确一侧。AT会使得决策边界的起伏更大，即向off-manifold方向移动。[[paper]](https://arxiv.org/abs/2106.10151) [[notes]](./all_notes/The-Dimpled-Manifold.pdf)
-2. **Understanding Adversarial Robustness Against On-manifold Adversarial Examples** (arxiv 2022) manifold角度研究AT行为，发现了on-manifold对抗样本的存在，提出了在GAN的隐空间做AT、在训练数据的特征向量张成的子空间中做AT两种思路 [[paper]] (https://arxiv.org/abs/2210.00430) [[notes]](./all_notes/Understanding-Adversarial-Robustness-Against.pdf)
 
 
 
@@ -280,46 +287,6 @@
 ### 2021
 
 **LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS** 将对模型权重矩阵的更新限制为低秩矩阵乘积$BA$的形式，极大减少了pre-trained model迁移到新任务的代价（不用fine-tune所有参数） [[paper]](https://arxiv.org/abs/2106.09685)
-
-
-
-## Neural Collapse
-
-### 2023
-
-1. **Neural Collapse: A Review on Modelling Principles and Generalization** (TMLR 2023)  [[paper]](http://arxiv.org/abs/2206.04041)
-
-### 2022
-
-1. **Limitations of Neural Collapse for Understanding Generalization in Deep Learning** (Arxiv 2022) [[paper]](http://arxiv.org/abs/2202.08384)
-
-
-
-## Feature Collapse
-
-1. **Feature Collapse** (Arxiv 2023)
-
-
-
-## Causality
-
-1. **Causal Confusion in Imitation Learning** (NeurIPS 2019) 解决imitation learning中的distribution shift问题（解决场景比较像OOD generalization中的correlation shift）。imitation learning：给出observation $X^t$和expert actions $A^t$，希望学出$\pi:X^t\rightarrow A^t$。本文的一个有趣的发现是：观测到太多的（历史）信息会影响泛化性能。[[paper]](https://proceedings.neurips.cc/paper_files/paper/2019/hash/947018640bf36a2bb609d3557a285329-Abstract.html) [[notes&thinking]](./all_notes/Causality.pdf)
-2. **Deep Latent-Variable Models** (NeurIPS 2017) 提出了一种VAE来实现存在unobserved confounder时的interventional probability的计算 [[paper]](https://proceedings.neurips.cc/paper/2017/hash/94b5bde6de888ddf9cde6748ad2523d1-Abstract.html) [[notes&thinking]](./all_notes/Causality.pdf)
-3. **Fairness in Decision-Making The Causal Explanation Formula** (AAAI 2018) 提出了一种非参数画的counterfactual probability的计算方法，所提出的三种指标DE IE SE分别detect三种discrimination path（从intervention到outcome的path）是否存在，并证明了total variation能够被这三个量表示 [[paper]](https://ojs.aaai.org/index.php/AAAI/article/view/11564) [[notes&thinking]](./all_notes/Causality.pdf)
-
-## Graph Homophily/Heterophily
-
-### 2023
-
-1. **Characterizing Graph Datasets for Node Classification: Homophily–Heterophily Dichotomy and Beyond** 
-2. 
-
-
-
-## 其他杂文
-
-1. **On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima** (ICLR2017) large-batch会导致模型更容易进入尖锐的极小值点，而尖锐的极小值点会不利于泛化 [[paper]](https://arxiv.org/abs/1609.04836)
-
 
 
 
@@ -364,4 +331,55 @@
 1. **Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?** [[paper]](https://arxiv.org/abs/2202.12837) 做了一系列消融实验来对ICL进行解释。主要结论：即使input和label不是一一对应，只要label的分布合理，那么ICL同样能给出较为正确的答案.
 2. **Symbol tuning improves in-context learning in language models** (EMNLP 2023) [[paper]](http://arxiv.org/abs/2305.08298) 将demonstration的label换为无意义的symbol，然后微调，以此强迫模型学习input-label mapping。
 3. **In-context Learning Generalizes, But Not Always Robustly: The Case of Syntax** (Arxiv Nov 2023) [[paper] ](In-context Learning Generalizes, But Not Always Robustly: The Case of Syntax) 本文通过构建一些语法任务来测试模型对于句子结构的理解能力，以及OOD泛化性能。总的说来，LLM还是会用到一些spurious correlation。
-4. 
+   
+
+
+
+
+
+
+
+
+
+## Others
+
+### Optimization
+
+1. **On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima** (ICLR2017) large-batch会导致模型更容易进入尖锐的极小值点，而尖锐的极小值点会不利于泛化 [[paper]](https://arxiv.org/abs/1609.04836)
+
+### Adversarial Robustness
+
+#### 2022
+
+1. **The Dimpled Manifold Model of Adversarial Examples in Machine Learning** (arxiv 2022) 从manifold角度研究网络训练的过程以及AT的行为。发现训练DNN大概分为两个过程：①使决策边界由随机快速分布到数据的manifold附近 ②通过在决策边界中产生凹凸，来使决策边界移动到样本的正确一侧。AT会使得决策边界的起伏更大，即向off-manifold方向移动。[[paper]](https://arxiv.org/abs/2106.10151) [[notes]](./all_notes/The-Dimpled-Manifold.pdf)
+2. **Understanding Adversarial Robustness Against On-manifold Adversarial Examples** (arxiv 2022) manifold角度研究AT行为，发现了on-manifold对抗样本的存在，提出了在GAN的隐空间做AT、在训练数据的特征向量张成的子空间中做AT两种思路 [[paper]] (https://arxiv.org/abs/2210.00430) [[notes]](./all_notes/Understanding-Adversarial-Robustness-Against.pdf)
+
+### Neural Collapse
+
+#### 2023
+
+1. **Neural Collapse: A Review on Modelling Principles and Generalization** (TMLR 2023)  [[paper]](http://arxiv.org/abs/2206.04041)
+
+#### 2022
+
+1. **Limitations of Neural Collapse for Understanding Generalization in Deep Learning** (Arxiv 2022) [[paper]](http://arxiv.org/abs/2202.08384)
+
+
+### Feature Collapse
+
+1. **Feature Collapse** (Arxiv 2023)
+
+### Causality
+
+1. **Causal Confusion in Imitation Learning** (NeurIPS 2019) 解决imitation learning中的distribution shift问题（解决场景比较像OOD generalization中的correlation shift）。imitation learning：给出observation $X^t$和expert actions $A^t$，希望学出$\pi:X^t\rightarrow A^t$。本文的一个有趣的发现是：观测到太多的（历史）信息会影响泛化性能。[[paper]](https://proceedings.neurips.cc/paper_files/paper/2019/hash/947018640bf36a2bb609d3557a285329-Abstract.html) [[notes&thinking]](./all_notes/Causality.pdf)
+2. **Deep Latent-Variable Models** (NeurIPS 2017) 提出了一种VAE来实现存在unobserved confounder时的interventional probability的计算 [[paper]](https://proceedings.neurips.cc/paper/2017/hash/94b5bde6de888ddf9cde6748ad2523d1-Abstract.html) [[notes&thinking]](./all_notes/Causality.pdf)
+3. **Fairness in Decision-Making The Causal Explanation Formula** (AAAI 2018) 提出了一种非参数画的counterfactual probability的计算方法，所提出的三种指标DE IE SE分别detect三种discrimination path（从intervention到outcome的path）是否存在，并证明了total variation能够被这三个量表示 [[paper]](https://ojs.aaai.org/index.php/AAAI/article/view/11564) [[notes&thinking]](./all_notes/Causality.pdf)
+
+### Graph Homophily/Heterophily
+
+#### 2023
+
+1. **Characterizing Graph Datasets for Node Classification: Homophily–Heterophily Dichotomy and Beyond** 
+   
+
+
