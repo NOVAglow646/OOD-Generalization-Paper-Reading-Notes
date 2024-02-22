@@ -12,11 +12,18 @@
 
 
 
-## OOD Generalization & Large Models & Multimodal
+## OOD Generalization of (Multimodal) LLMs 
 
 ### 2024
 
-1. **On the Out-Of-Distribution Generalization of Multimodal Large Language Models** (Arxiv Feb 2024) [[paper]](http://arxiv.org/abs/2402.06599)
+1. **On the Out-Of-Distribution Generalization of Multimodal Large Language Models** (Arxiv Feb 2024) [[paper]](http://arxiv.org/abs/2402.06599) 对MLLM进行了一系列OOD性能的验证，发现：①在经典OOD数据集上MLLM能超过以前的sota ②在医学、分子数据集上效果不好 ③ICL能提升MLLM OOD性能，即使ICL example的分布和测试域不同。
+
+### 2023
+
+1. **In-context Learning Generalizes, But Not Always Robustly: The Case of Syntax** (Arxiv Nov 2023) [[paper] ](In-context Learning Generalizes, But Not Always Robustly: The Case of Syntax) 本文通过构建一些语法任务来测试模型对于句子结构的理解能力，以及OOD泛化性能。总的说来，LLM还是会用到一些spurious correlation。
+2. **On the Robustness of ChatGPT: An Adversarial and Out-of-distribution Perspective** (ICLR 2024 workshop highlighted) [[paper]](http://arxiv.org/abs/2302.12095)
+3. **Positional Information Matters for Invariant In-Context Learning: A Case Study of Simple Function Classes** (ongoing work) [[paper]](Positional Information Matters for Invariant In-Context Learning: A Case Study of Simple Function Classes) 发现模型对于demonstration的permutation invariance或许是ICL OOD的关键。提出使用相同的positional encoding来提升ICL OOD性能。
+4. **A Closer Look at In-Context Learning under Distribution Shifts** (Arxiv May 2023) [[paper]](http://arxiv.org/abs/2305.16704) 
 
 
 
@@ -171,7 +178,7 @@
 
 
 
-## OOD/Domain Generalization & Test-time adaptation
+## Test-time adaptation for Generalization
 
 ### 2023
 
@@ -196,7 +203,7 @@
 
 
 
-## Graph OOD Generalization
+## Graph OOD Generalization (graph-level & node-level)
 
 ### 2023
 
@@ -343,6 +350,7 @@
 1. **Explore Spurious Correlations at the Concept Level in Language Models for Text Classification** (Arxiv Jan 2024) [[paper]](http://arxiv.org/abs/2311.08648) 发现了LLM在文本分类中会依赖的concept-label spurious correlation，提出使用ChatGPT来扩充数据来消除虚假关联。
 2. **Positional Information Matters for Invariant In-Context Learning: A Case Study of Simple Function Classes** (ongoing work) [[paper]](Positional Information Matters for Invariant In-Context Learning: A Case Study of Simple Function Classes) 发现模型对于demonstration的permutation invariance或许是ICL OOD的关键。提出使用相同的positional encoding来提升ICL OOD性能。
 3. **Simple synthetic data reduces sycophancy in large language models** (Arxiv Feb 2024) [[paper]](http://arxiv.org/abs/2308.03958) LLMs会迎合提问者的观点而罔顾事实。提出合成一些用户的观点和正确性无关的新prompt，然后在这些数据上fine-tune来解决sycophancy问题。
+4. **Batch ICL** 发现使用batch ICL，将N个example设置为N个one-shot inference，再把每个inference得到的token做平均，替换到query sample做aggregation最终再预测能带来提升。一个奇特的发现是做aggregation时从某一层往后做性能会突增，在那之前性能接近零。对此解释是transformer的低层是在学语义信息。
 
 
 
