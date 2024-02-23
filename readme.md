@@ -40,9 +40,11 @@
 1. **In-context Learning Generalizes, But Not Always Robustly: The Case of Syntax** (Arxiv Nov 2023) [[paper] ](In-context Learning Generalizes, But Not Always Robustly: The Case of Syntax) 本文通过构建一些语法任务来测试模型对于句子结构的理解能力，以及OOD泛化性能。总的说来，LLM还是会用到一些spurious correlation。
 2. **On the Robustness of ChatGPT: An Adversarial and Out-of-distribution Perspective** (ICLR 2024 workshop highlighted) [[paper]](http://arxiv.org/abs/2302.12095)
 3. **Positional Information Matters for Invariant In-Context Learning: A Case Study of Simple Function Classes** (ongoing work) [[paper]](Positional Information Matters for Invariant In-Context Learning: A Case Study of Simple Function Classes) 发现模型对于demonstration的permutation invariance或许是ICL OOD的关键。提出使用相同的positional encoding来提升ICL OOD性能。
-4. **A Closer Look at In-Context Learning under Distribution Shifts** (Arxiv May 2023) [[paper]](http://arxiv.org/abs/2305.16704) 
+4. **A Closer Look at In-Context Learning under Distribution Shifts** (Arxiv May 2023) [[paper]](http://arxiv.org/abs/2305.16704) 在一定的covariate shift下，transformer比set-based MLP的性能好；在严重的分布偏移下，两种模型的ICL能力都丧失了。3. 4. 这两篇都是整个测试prompt和训练prompt分布不同的情况。
 
+### 2022
 
+1. **What Can Transformers Learn In-Context? A Case Study of Simple Function Classes** (NeurIPS 2022) [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/hash/c529dba08a146ea8d6cf715ae8930cbe-Abstract-Conference.html) 在一个toy linear regression任务上，尝试了两种OOD setting：①test和train prompt分布不同 ②test时的ICE和query分布不同。发现ICL在这两种场景下均有一定的泛化能力。
 
 ## OOD Generalization using Large Vision-language models
 
@@ -67,6 +69,7 @@
 ### 2024
 1. **Spurious Feature Diversification Improves Out-of-distribution Generalization** (ICLR 2024 under review) 通过ensemble学更多的spurious feature能“冲淡”它们各自的影响 [[paper]](https://openreview.net/forum?id=d6H4RBi7RH)
 1. **Out-Of-Domain Unlabeled Data Improves Generalization** (ICLR 2024 spotlight) [[paper]](https://openreview.net/forum?id=Bo6GpQ3B9a)
+1. **Robust agents learn causal world models** (ICLR 2024 Oral) [[paper]](http://arxiv.org/abs/2402.10877) 通过构建一个causal influence diagram (CID，一种基于causal baysian network扩展的模型)，证明了对于一个决策任务（分类、回归等传统任务都可以用决策任务来建模），学习近似的causal mnodel是学到误差有界的策略的充要条件。
 
 ### 2023
 
@@ -76,7 +79,7 @@
 
 3. **WHAT IS MISSING IN IRM TRAINING AND EVALUATION? CHALLENGES AND SOLUTIONS** (ICLR2023) 指出large-batch会使得各IRM方法的结果不准，small-batch的效果足以匹敌基于large-batch的优化算法。指出了CMNIST只测-90%是不完善的。基于IRM-GAME提出了BLOC-IRM，发现显示地引入per-environment stationary正则项能缓解各domain分类器一致的这个约束带来的各环境分类器次优的问题。[[paper]](https://openreview.net/forum?id=MjsDeTcDEy)
 
-4. **Aggregation of Disentanglement: Reconsidering Domain Variations in Domain Generalization** (arxiv2023) 使用contrastive learning来拉近统一domain数据的表示、推远不同domain数据的表示（文章claim自己是首个在contrastive learning for DG中考虑不同domain的），同时提出所谓的domain-specific feature也有助于泛化（但是文章的实现算法貌似没有显式的解耦invariant/variant feature的过程，也没有显示地构建domain-specific feature）[[paper]](https://arxiv.org/abs/2302.02350)
+4. **Aggregation of Disentanglement: Reconsidering Domain Variations in Domain Generalization** (Arxiv 2023) 使用contrastive learning来拉近统一domain数据的表示、推远不同domain数据的表示（文章claim自己是首个在contrastive learning for DG中考虑不同domain的），同时提出所谓的domain-specific feature也有助于泛化（但是文章的实现算法貌似没有显式的解耦invariant/variant feature的过程，也没有显示地构建domain-specific feature）[[paper]](https://arxiv.org/abs/2302.02350)
 
 5. **Domain Generalization Emerges from Dreaming** (arxiv2023) 先通过类似AdaIN的方法生成风格迁移的图像 $x'$，再minimize原始图像 $x$ 和 $x'$的prediction的差距。性能甚至可以超过SWAD。[[paper]](https://arxiv.org/pdf/2302.00980.pdf)
 
@@ -331,11 +334,13 @@
 1. **Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?** [[paper]](https://arxiv.org/abs/2202.12837) 做了一系列消融实验来对ICL进行解释。主要结论：即使input和label不是一一对应，只要label的分布合理，那么ICL同样能给出较为正确的答案.
 2. **Symbol tuning improves in-context learning in language models** (EMNLP 2023) [[paper]](http://arxiv.org/abs/2305.08298) 将demonstration的label换为无意义的symbol，然后微调，以此强迫模型学习input-label mapping。
 3. **In-context Learning Generalizes, But Not Always Robustly: The Case of Syntax** (Arxiv Nov 2023) [[paper] ](In-context Learning Generalizes, But Not Always Robustly: The Case of Syntax) 本文通过构建一些语法任务来测试模型对于句子结构的理解能力，以及OOD泛化性能。总的说来，LLM还是会用到一些spurious correlation。
-   
+4. **A Closer Look at In-Context Learning under Distribution Shifts** (Arxiv May 2023) [[paper]](http://arxiv.org/abs/2305.16704) 在一定的分布偏移下，transformer比set-based MLP的性能好；在严重的分布偏移下，两种模型的ICL能力都丧失了。
 
 
 
+### 2022
 
+1. **What Can Transformers Learn In-Context? A Case Study of Simple Function Classes** (NeurIPS 2022) [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/hash/c529dba08a146ea8d6cf715ae8930cbe-Abstract-Conference.html) 在一个toy linear regression任务上，尝试了两种OOD setting：①test和train prompt分布不同 ②test时的ICE和query分布不同。发现ICL在这两种场景下均有一定的泛化能力。
 
 
 
@@ -381,5 +386,4 @@
 
 1. **Characterizing Graph Datasets for Node Classification: Homophily–Heterophily Dichotomy and Beyond** 
    
-
 
