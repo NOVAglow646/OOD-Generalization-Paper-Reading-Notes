@@ -41,6 +41,7 @@
 2. **On the Robustness of ChatGPT: An Adversarial and Out-of-distribution Perspective** (ICLR 2024 workshop highlighted) [[paper]](http://arxiv.org/abs/2302.12095)
 3. **Positional Information Matters for Invariant In-Context Learning: A Case Study of Simple Function Classes** (ongoing work) [[paper]](Positional Information Matters for Invariant In-Context Learning: A Case Study of Simple Function Classes) 发现模型对于demonstration的permutation invariance或许是ICL OOD的关键。提出使用相同的positional encoding来提升ICL OOD性能。
 4. **A Closer Look at In-Context Learning under Distribution Shifts** (Arxiv May 2023) [[paper]](http://arxiv.org/abs/2305.16704) 在一定的covariate shift下，transformer比set-based MLP的性能好；在严重的分布偏移下，两种模型的ICL能力都丧失了。3. 4. 这两篇都是整个测试prompt和训练prompt分布不同的情况。
+5. **Few-shot Fine-tuning vs. In-context Learning: A Fair Comparison and Evaluation** (Arxiv May 2023) [[paper]](https://www.lsv.uni-saarland.de/wp-content/uploads/2023/07/Few-shot-Fine-tuning-vs.-In-context-Learning.pdf) 在参数量相当的情况下，ICL的OOD不如FT。30B的ICL跟6.7B的FT性能相当。大部分情况下ICL不如FT。
 
 ### 2022
 
@@ -70,6 +71,8 @@
 1. **Spurious Feature Diversification Improves Out-of-distribution Generalization** (ICLR 2024 under review) 通过ensemble学更多的spurious feature能“冲淡”它们各自的影响 [[paper]](https://openreview.net/forum?id=d6H4RBi7RH)
 1. **Out-Of-Domain Unlabeled Data Improves Generalization** (ICLR 2024 spotlight) [[paper]](https://openreview.net/forum?id=Bo6GpQ3B9a)
 1. **Robust agents learn causal world models** (ICLR 2024 Oral) [[paper]](http://arxiv.org/abs/2402.10877) 通过构建一个causal influence diagram (CID，一种基于causal baysian network扩展的模型)，证明了对于一个决策任务（分类、回归等传统任务都可以用决策任务来建模），学习近似的causal mnodel是学到误差有界的策略的充要条件。
+1. **Context is Environment** (ICLR 2024) [[paper]](https://openreview.net/forum?id=8VPWfqtQMX) 提出以一种ICL的范式来帮助domain generalization， 本质上是一种test-time adaptation
+1. **Ask Your Distribution Shift if Pre-Training is Right for You** (ICLR 2024 rejected) 【结论存疑】实验上发现pretrain对out-of-support数据（类似diversity shift）更有用，对in support作用不大。
 
 ### 2023
 
@@ -200,6 +203,10 @@
 
 ## Test-time adaptation for Generalization
 
+### 2024
+
+1. **Context is Environment** (ICLR 2024) [[paper]](https://openreview.net/forum?id=8VPWfqtQMX) 提出以一种ICL的范式来帮助domain generalization， 本质上是一种test-time adaptation
+
 ### 2023
 
 1. **Align Your Prompts: Test-Time Prompting with Distribution Alignment for Zero-Shot Generalization** [[paper]](https://arxiv.org/pdf/2311.01459.pdf)
@@ -325,7 +332,8 @@
 1. **Explore Spurious Correlations at the Concept Level in Language Models for Text Classification** (Arxiv Jan 2024) [[paper]](http://arxiv.org/abs/2311.08648) 发现了LLM在文本分类中会依赖的concept-label spurious correlation，提出使用ChatGPT来扩充数据来消除虚假关联。
 2. **Positional Information Matters for Invariant In-Context Learning: A Case Study of Simple Function Classes** (ongoing work) [[paper]](Positional Information Matters for Invariant In-Context Learning: A Case Study of Simple Function Classes) 发现模型对于demonstration的permutation invariance或许是ICL OOD的关键。提出使用相同的positional encoding来提升ICL OOD性能。
 3. **Simple synthetic data reduces sycophancy in large language models** (Arxiv Feb 2024) [[paper]](http://arxiv.org/abs/2308.03958) LLMs会迎合提问者的观点而罔顾事实。提出合成一些用户的观点和正确性无关的新prompt，然后在这些数据上fine-tune来解决sycophancy问题。
-4. **Batch ICL** 发现使用batch ICL，将N个example设置为N个one-shot inference，再把每个inference得到的token做平均，替换到query sample做aggregation最终再预测能带来提升。一个奇特的发现是做aggregation时从某一层往后做性能会突增，在那之前性能接近零。对此解释是transformer的低层是在学语义信息。
+4. **Understanding In-Context Learning in Transformers and LLMs by Learning to Learn Discrete Functions** (ICLR 2024 Oral) [[paper]]()
+5. **Batch-ICL: Effective, Efficient, and Order-Agnostic In-Context Learning**  (Arxiv Jan 2024) 发现使用batch ICL，将N个example设置为N个one-shot inference，再把每个inference得到的token做平均，替换到query sample做aggregation最终再预测能带来提升。一个奇特的发现是做aggregation时从某一层往后做性能会突增，在那之前性能接近零。对此解释是transformer的低层是在学语义信息。
 
 
 
@@ -335,12 +343,15 @@
 2. **Symbol tuning improves in-context learning in language models** (EMNLP 2023) [[paper]](http://arxiv.org/abs/2305.08298) 将demonstration的label换为无意义的symbol，然后微调，以此强迫模型学习input-label mapping。
 3. **In-context Learning Generalizes, But Not Always Robustly: The Case of Syntax** (Arxiv Nov 2023) [[paper] ](In-context Learning Generalizes, But Not Always Robustly: The Case of Syntax) 本文通过构建一些语法任务来测试模型对于句子结构的理解能力，以及OOD泛化性能。总的说来，LLM还是会用到一些spurious correlation。
 4. **A Closer Look at In-Context Learning under Distribution Shifts** (Arxiv May 2023) [[paper]](http://arxiv.org/abs/2305.16704) 在一定的分布偏移下，transformer比set-based MLP的性能好；在严重的分布偏移下，两种模型的ICL能力都丧失了。
+5. **Few-shot Fine-tuning vs. In-context Learning: A Fair Comparison and Evaluation** (Arxiv May 2023) [[paper]](https://www.lsv.uni-saarland.de/wp-content/uploads/2023/07/Few-shot-Fine-tuning-vs.-In-context-Learning.pdf) 在参数量相当的情况下，ICL的OOD不如FT。30B的ICL跟6.7B的FT性能相当。大部分情况下ICL不如FT。
+6. **Instruction-following Evaluation through Verbalizer Manipulation** (Arxiv July 2023) [[paper]](http://arxiv.org/abs/2307.10558) 发现LLM遵循flipped-label instructions的能力很差，说明ICL可能只是直接利用了预训练语料的知识，而不是学习了context。即使是强如GPT-4的模型也不能很好地遵循flipped-label instructions。
 
 
 
 ### 2022
 
 1. **What Can Transformers Learn In-Context? A Case Study of Simple Function Classes** (NeurIPS 2022) [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/hash/c529dba08a146ea8d6cf715ae8930cbe-Abstract-Conference.html) 在一个toy linear regression任务上，尝试了两种OOD setting：①test和train prompt分布不同 ②test时的ICE和query分布不同。发现ICL在这两种场景下均有一定的泛化能力。
+2. **Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?** (EMNLP 2022) [[paper]](http://arxiv.org/abs/2202.12837) 探究ICL work的因素。
 
 
 
@@ -364,10 +375,11 @@
 #### 2023
 
 1. **Neural Collapse: A Review on Modelling Principles and Generalization** (TMLR 2023)  [[paper]](http://arxiv.org/abs/2206.04041)
+1. **How Far Pre-trained Models Are from Neural Collapse on the Target Dataset Informs their Transferability** (ICCV 2023) [[paper]]() 设计了一个empirical的指标来测量目标域模型离NC有多远，来实现以较低开销估计模型在下游目标域的性能（依赖的idea是在目标域上越NC，性能越好）。一个重要的发现是对于有监督/无监督预训练，在源域上within-class variability越大，下游迁移能力越好。
 
 #### 2022
 
-1. **Limitations of Neural Collapse for Understanding Generalization in Deep Learning** (Arxiv 2022) [[paper]](http://arxiv.org/abs/2202.08384)
+1. **Limitations of Neural Collapse for Understanding Generalization in Deep Learning** (Arxiv 2022) [[paper]](http://arxiv.org/abs/2202.08384) 发现：①训练时和测试时的NC并不一定会同时发生，甚至有可能趋势相反。因此建议对它们分别刻画。②测试时发生NC会导致迁移性更差的特征。（注：这里的”测试时“NC其实并不准确，因为他后面测的实际上是与测试时不同的一个任务：CIFAR10，在”测试时“（也就是预训练）二分类（两个粗类），下游任务10分类。）
 
 
 ### Feature Collapse
