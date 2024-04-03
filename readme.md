@@ -2,7 +2,7 @@
 
 本仓库记录关于OOD Generalization/Domain Generlization/Domain Adaptation/Causality等topic的文章。看过的文章会至少用一句话概括内容，有些还会有notes。只有标题的就是还没看过的，只是先存档到这里。
 
-###  🔥 Updates
+###  🔥 Updates 
 
 - 2024-02-21 接下来将会主要关注LLM/Multi-modal LLMs的generalization。
 
@@ -11,14 +11,14 @@
 * [OOD Generalization of (Multimodal) LLMs](#ood-generalization-of-multimodal-LLMs)
 * [OOD Generalization using Large Vision-language models](#ood-generalization-using-large-vision-language-models)
 * [New tasks of OOD Generalization](#new-tasks-of-ood-generalization)
-* [OOD Generalization (classic)](#ood-generalization-classic)
+* ⭐[OOD Generalization (classic)](#ood-generalization-classic)
 * [Test-time Adaptation for Generalization](#test-time-adaptation-for-generalization)
 * [Domain Generalization/Adaptation in Down-stream CV/NLP Tasks](#domain-generalizationadaptation-in-down-stream-cvnlp-tasks)
-* [Graph OOD Generalization (graph-level & node-level)](#graph-ood-generalization-graph-level--node-level)
+* ⭐[Graph OOD Generalization (graph-level & node-level)](#graph-ood-generalization-graph-level--node-level)
 * [Domain Adaptation](#domain-adaptation)
 * [LLMs/Large Multi-modal models](#llmslarge-multi-modal-models)
 * [Prompt Learning](#prompt-learning)
-* [In-Context Learning](#in-context-learning)
+* ⭐[In-Context Learning](#in-context-learning)
 * [Others](#others)
     * [Optimization](#optimization) 
     * [Adversarial Robustness](#adversarial-robustness)
