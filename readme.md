@@ -2,7 +2,7 @@
 
 本仓库记录关于OOD Generalization/Domain Generlization/Domain Adaptation/Causality等topic的文章。看过的文章会至少用一句话概括内容，有些还会有notes。只有标题的就是还没看过的，只是先存档到这里。
 
-###  🔥 Updates 
+###  🔥 Updates
 
 - 2024-02-21 接下来将会主要关注LLM/Multi-modal LLMs的generalization。
 
@@ -11,14 +11,14 @@
 * [OOD Generalization of (Multimodal) LLMs](#ood-generalization-of-multimodal-LLMs)
 * [OOD Generalization using Large Vision-language models](#ood-generalization-using-large-vision-language-models)
 * [New tasks of OOD Generalization](#new-tasks-of-ood-generalization)
-* ⭐[OOD Generalization (classic)](#ood-generalization-classic)
+* [OOD Generalization (classic)](#ood-generalization-classic)
 * [Test-time Adaptation for Generalization](#test-time-adaptation-for-generalization)
 * [Domain Generalization/Adaptation in Down-stream CV/NLP Tasks](#domain-generalizationadaptation-in-down-stream-cvnlp-tasks)
-* ⭐[Graph OOD Generalization (graph-level & node-level)](#graph-ood-generalization-graph-level--node-level)
+* [Graph OOD Generalization (graph-level & node-level)](#graph-ood-generalization-graph-level--node-level)
 * [Domain Adaptation](#domain-adaptation)
 * [LLMs/Large Multi-modal models](#llmslarge-multi-modal-models)
 * [Prompt Learning](#prompt-learning)
-* ⭐[In-Context Learning](#in-context-learning)
+* [In-Context Learning](#in-context-learning)
 * [Others](#others)
     * [Optimization](#optimization) 
     * [Adversarial Robustness](#adversarial-robustness)
@@ -70,11 +70,12 @@
 
 ## OOD Generalization (classic)
 ### 2024
-1. **Spurious Feature Diversification Improves Out-of-distribution Generalization** (ICLR 2024 under review) 通过ensemble学更多的spurious feature能“冲淡”它们各自的影响 [[paper]](https://openreview.net/forum?id=d6H4RBi7RH)
+1. **Spurious Feature Diversification Improves Out-of-distribution Generalization** (ICLR 2024) 通过ensemble学更多的spurious feature能“冲淡”它们各自的影响 [[paper]](https://openreview.net/forum?id=d6H4RBi7RH)
 1. **Out-Of-Domain Unlabeled Data Improves Generalization** (ICLR 2024 spotlight) [[paper]](https://openreview.net/forum?id=Bo6GpQ3B9a)
 1. **Robust agents learn causal world models** (ICLR 2024 Oral) [[paper]](http://arxiv.org/abs/2402.10877) 通过构建一个causal influence diagram (CID，一种基于causal baysian network扩展的模型)，证明了对于一个决策任务（分类、回归等传统任务都可以用决策任务来建模），学习近似的causal mnodel是学到误差有界的策略的充要条件。
 1. **Context is Environment** (ICLR 2024) [[paper]](https://openreview.net/forum?id=8VPWfqtQMX) 提出以一种ICL的范式来帮助domain generalization， 本质上是一种test-time adaptation
 1. **Ask Your Distribution Shift if Pre-Training is Right for You** (ICLR 2024 rejected) 【结论存疑】实验上发现pretrain对out-of-support数据（类似diversity shift）更有用，对in support（类似correlation shift）作用不大。
+1. **Improving Domain Generalization with Domain Relations** (ICLR 2024 spotlight) [[paper]](https://openreview.net/forum?id=Dc4rXq3HIA) 利用数据集的meta-data构建domain relation，在训练时优化这个relation并为每个domain训练一个domain specific head，在测试时根据test和training domain之间的relation加权每个training domain expert的预测作为最终预测。
 
 ### 2023
 
