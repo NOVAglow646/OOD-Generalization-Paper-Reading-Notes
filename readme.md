@@ -235,6 +235,10 @@
 
 ## Graph OOD Generalization (graph-level & node-level)
 
+### 2024
+
+1. **Graph Out-of-Distribution Generalization via Causal Intervention** (WWW 2024) [[paper]](http://arxiv.org/abs/2402.11494) node-level。提了一种data driven的方法来推测环境概率分布，并对每个环境的aggregation过程添加一个环境相关的可训练的projector
+
 ### 2023
 
 1.  **Towards Understanding Generalization of Graph Neural Networks** (ICLR 2023) 分析了不同GNN架构对泛化误差的影响。特别地，对于GNN最大度数越小，泛化误差越小。 [[paper]](https://openreview.net/forum?id=BhMyLk0YNy)
@@ -244,6 +248,7 @@
 5.  **RETHINKING INVARIANT GRAPH REPRESENTATION LEARNING WITHOUT ENVIRONMENT PARTITIONS (GALA)** (ICLR 2023 Domain Generalization Workshop) 改进版CIGA。讲CIGA的causal contrastive loss改为对齐spurious correlation主导和invariant correlation主导的两部分子集，不同关联主导的数据通过一个额外的ERM模型获得（ERM预测的label不同，就认为是它们属于由不同的关联主导的part） [[paper]](https://openreview.net/forum?id=bjw5jqGtDy)
 6.  **FLOOD: A Flexible Invariant Learning Framework for Out-of-Distribution Generalization on Graphs** (KDD 2023) node-level OOD任务。通过已有的图augmentation方法产生一系列增强环境，再使用如VREx的不变学习目标；同时加一个Bootstrapped Representation Learning目标。 [[paper]](https://dl.acm.org/doi/10.1145/3580305.3599355)
 7.  **Causality and Independence Enhancement for Biased Node Classification** (CIKM 2023) 把causal feature看成do(c)，然后假设s是c的backdoor，基于此模型来用一个经验性方法建模p(Y|C,S)从而学出causal feature/spurious feature（通过在node feature上加2个MLP实现）。感觉causal graph的假设太强。并且只能解决concept shift。 [[paper]](https://dl.acm.org/doi/10.1145/3583780.3614804)
+8.  **Learning Invariant Representations of Graph Neural Networks via Cluster Generalization** (NeurIPS 2023) [[paper]](https://proceedings.neurips.cc/paper_files/paper/2023/file/8ed2293e714b7692b63117e330e551e8-Paper-Conference.pdf) 解决结构shift，semi-supervised setting。通过聚类node feature获得环境，然后利用聚类信息外插node feature做数据增强。
 
 ###  2022
 
@@ -368,7 +373,11 @@
 
 13. **Understanding In-context Learning From Repetitions** (ICLR 2024) [[paper]](https://openreview.net/forum?id=bGGYcvw8mp) 揭示了context中重复出现的pattern会导致模型更倾向于输出这个pattern的现象。
 
-14. **In-context Learning Learns Label Relationships but is not Conventional Learning** (ICLR 2024) [[paper]](https://openreview.net/pdf?id=YPIA7bgd5y) 以更大的模型和更长的context重新审视以往的ICL讨论，并重新得出了以下三个结论：1)ICL会学x-y映射，正确的label是有用的，且模型越大这一效应越明显 2)ICL能学没预训练时见过的新任务 3)即使context很长，ICL也不能彻底覆盖预训练获得的preference 4)LLM更关注更靠近query的example
+14. **In-context Learning Learns Label Relationships but is not Conventional Learning** (ICLR 2024) [[paper]](https://openreview.net/pdf?id=YPIA7bgd5y) 以更大的模型和更长的context重新审视以往的ICL讨论，并得出了以下三个结论：1)ICL会学x-y映射，正确的label是有用的，且模型越大这一效应越明显 2)ICL能学没预训练时见过的新任务 3)即使context很长，ICL也不能彻底覆盖预训练获得的preference 4)LLM更关注更靠近query的example
+
+15. **How do Large Language Models Learn In-Context? Query and Key Matrices of In-Context Heads are Two Towers for Metric Learning** (Arxiv Feb 2024) [[paper]](http://arxiv.org/abs/2402.02872) 在简单的word classification任务上，首先按照类似Function Vector的做法，提取出对输出正确预测贡献最大的head。然后分析这些head并发现了如下机制：label的V encode了label的特征，label的K encode了demonstration的特征；last token的Q encode了query的特征；last token query和正确label的K的attention score比其他head的显著大；last token Q与在context中出现更多的label/更靠近query的label的K的attention score更大。
+
+16. **Locating Factual Knowledge in Large Language Models: Exploring the Residual Stream and Analyzing Subvalues in Vocabulary Space** (Arxiv Jan 2024) [[paper]](http://arxiv.org/abs/2312.12141) 提出了一种定位transformer中对输出某一label贡献最大的attention或FFN layer（或其subvalue）的方法。
 
     
 
@@ -388,7 +397,7 @@
 11. **Larger language models do in-context learning differently** (Arxiv Mar 2023) [[paper]](http://arxiv.org/abs/2303.03846) 和disentanglement TR and TL 那篇差不多，发现了：小模型会倾向于用prior，随着模型增大，覆盖prior而从context学习映射关系的能力会越来越强。
 12. **What and How Does In-Context Learning Learn? Bayesian Model Averaging, Parameterization, and Generalization** (Arxiv Oct 2023) [[paper]](arXiv:2305.19420) 理论文章，还没看
 13. **In-Context Learning Creates Task Vectors** (Arxiv Oct 2023) [[paper]](http://arxiv.org/abs/2310.15916) 同样发现context的最后一个token的表示encode了该任务的信息。通过实验发现ICL近似是在实现如下过程：1)从context学出一个映射函数 2)将这个映射函数用到query上来预测。一个重要观察是：说明模型更倾向于使用vector里的信息，而不是原始context
-14. 
+14. **Label Words are Anchors: An Information Flow Perspective for Understanding In-Context Learning** (EMNLP 2023) [[paper]](http://arxiv.org/abs/2305.14160) 浅层网络从text到label聚合信息，深层网络从label到last token聚合信息。
 
 
 
@@ -403,9 +412,20 @@
 
 ## Others
 
-### Optimization
+### Network Architectures
 
-1. **On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima** (ICLR2017) large-batch会导致模型更容易进入尖锐的极小值点，而尖锐的极小值点会不利于泛化 [[paper]](https://arxiv.org/abs/1609.04836)
+### 2023
+
+1. **Analyzing Transformers in Embedding Space** [[paper]](http://arxiv.org/abs/2209.02535) Section 2.1 的 transformer architecture讲得比attention is all you need好
+
+#### 2021
+
+1. **Transformer Feed-Forward Layers Are Key-Value Memories** (EMNLP 2021) [[paper]](http://arxiv.org/abs/2012.14913) transformer的FFN第一层是key，第二层是value
+2. 
+
+### 0Optimization
+
+1. **On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima** (ICLR 2017) large-batch会导致模型更容易进入尖锐的极小值点，而尖锐的极小值点会不利于泛化 [[paper]](https://arxiv.org/abs/1609.04836)
 
 ### Adversarial Robustness
 
