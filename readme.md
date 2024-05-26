@@ -1,8 +1,8 @@
 ## Preface
 
-本仓库记录关于OOD Generalization/Domain Generlization/Domain Adaptation/Causality等topic的文章。看过的文章会至少用一句话概括内容，有些还会有notes。只有标题的就是还没看过的，只是先存档到这里。
+本仓库记录关于OOD Generalization/Domain Generlization/In-context Learning/LLM/LVM等topic的文章。看过的文章会至少用一句话概括内容，有些还会有notes。只有标题的就是还没看过的，只是先存档到这里。
 
-每天至少更新一篇文章。
+**每天至少更新一篇文章。**
 
 ###  🔥 Updates
 
@@ -382,7 +382,9 @@
 
 16. **Locating Factual Knowledge in Large Language Models: Exploring the Residual Stream and Analyzing Subvalues in Vocabulary Space** (Arxiv Jan 2024) [[paper]](http://arxiv.org/abs/2312.12141) 提出了一种定位transformer中对输出某一label贡献最大的attention或FFN layer（或其subvalue）的方法。
 
-17. **In-Context Learning State Vector with Inner and Momentum Optimization** (Arxiv 2024 April) 提了一种新的用vector压缩信息的技术（State Vector SV）：是将前L层的每层的attention输出concat起来。然后提了三种技术（aggregate每一个example的SV、用momentum、分组提取SV再聚合）来进一步优化SV，取得了一些性能提升。
+17. **In-Context Learning State Vector with Inner and Momentum Optimization** (Arxiv April 2024) 提了一种新的用vector压缩信息的技术（State Vector SV）：是将前L层的每层的attention输出concat起来。然后提了三种技术（aggregate每一个example的SV、用momentum、分组提取SV再聚合）来进一步优化SV，取得了一些性能提升。[[paper]](http://arxiv.org/abs/2404.11225)
+
+18. **GNNavi: Navigating the Information Flow in Large Language Models by Graph Neural Network** (Arxiv Feb 2024) 提出将GNN插在LLM的某一层后面，强行使得information flow（token representation就是node representation）是从x->y和y->:连边，然后得到的node representation输给LLM的下一层（每个token的都保留着，因为GNN的输出也是所有node的输出）。最后只在ICL数据集上微调GNN，能够实现和lora媲美的速度和更好的acc。 [[paper]](http://arxiv.org/abs/2402.11709)
 
     
 
