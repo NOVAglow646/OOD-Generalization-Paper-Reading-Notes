@@ -2,10 +2,11 @@
 
 本仓库记录关于OOD Generalization/Domain Generlization/In-context Learning/LLM/LVM等topic的文章。看过的文章会至少用一句话概括内容，有些还会有notes。只有标题的就是还没看过的，只是先存档到这里。
 
-**每天至少更新一篇文章。**
+**每天至少更新一篇文章。**每天更新的文章会写在commit comment中。
 
 ###  🔥 Updates
 
+- 2024-05 接下来主要关注探究ICL机制的相关工作
 - 2024-02-21 接下来将会主要关注LLM/Multi-modal LLMs的generalization。
 
 ## Directory
