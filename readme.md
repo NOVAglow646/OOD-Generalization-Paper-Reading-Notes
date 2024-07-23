@@ -63,7 +63,7 @@
 4. **Distilling Out-of-Distribution Robustness from Vision-Language Foundation Models** (NIPS 2023) 在用In domain数据生成的Discrete adversarial eaxmple上拿一个CLIP做蒸馏提升就能超过普通的Knowledge Distillation和DAT [[paper]](https://arxiv.org/pdf/2311.01441.pdf) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
 5. **Distilling from Vision-Language Models for Improved OOD Generalization in Vision Tasks** (Arxiv Oct 2023) 对齐student model经过一个projector后的表示和CLIP的text/image encoder的输出 [[paper]](https://arxiv.org/abs/2310.08255) [[slides]](/all_notes/2023.12.29-OOD-LM.pptx)
 6. **Context-Aware Robust Fine-Tuning** (IJCV Dec 2023) 发现微调会破坏CLIP原有的对于context（虚假特征）zero-shot的分类能力。提出在微调的时候对齐预训练的CLIP预测的context的概率分布和正在被微调的模型预测的context的概率分布 [[paper]](https://link.springer.com/article/10.1007/s11263-023-01951-2) 
-7. **ArGue: Attribute-Guided Prompt Tuning for Vision-Language Models **(Arxiv Nov 2023) [[paper]](http://arxiv.org/abs/2311.16494) 本文提出了neg prompt，就是在prompt里加入neg attribute的embedding。在prompt tuning时，希望在使用neg prompt时，预测成任何类别的概率相同，以此来强行消除虚假关联（文中loss式(9)）。使用neg prompt时预测为某一类的概率就是用neg embedding+任何class的embedding和图像表示算相似度。
+7. **ArGue: Attribute-Guided Prompt Tuning for Vision-Language Models**(Arxiv Nov 2023) [[paper]](http://arxiv.org/abs/2311.16494) 本文提出了neg prompt，就是在prompt里加入neg attribute的embedding。在prompt tuning时，希望在使用neg prompt时，预测成任何类别的概率相同，以此来强行消除虚假关联（文中loss式(9)）。使用neg prompt时预测为某一类的概率就是用neg embedding+任何class的embedding和图像表示算相似度。
 
 
 
@@ -427,6 +427,14 @@
 
 26. **Rectifying Demonstration Shortcut in In-Context Learning** (NAACL 2024) [[paper]](http://arxiv.org/abs/2403.09488) 发现context单词的字面意思会影响ICL分类的结果（一种shortcut）。提出了一种calibration的策略。
 
+27. **Investigating the Pre-Training Dynamics of In-Context Learning: Task Recognition vs. Task Learning** (Arxiv June 2024) [[paper]](http://arxiv.org/abs/2406.14022) 训练过程中task learning和task recognition存在竞争现象
+
+28. **Transformers Can Perform Distributionally-robust Optimisation through In-context Learning** (ICML 2024 workshop on ICL) [[paper]](https://openreview.net/pdf?id=MOgg2cEms5) ICL有一定的DRO的能力 
+
+29. **How Do In-Context Examples Affect Compositional Generalization?** (ACL 2024) [[paper]](http://arxiv.org/abs/2305.04835) 发现context example对于组合泛化能力影响显著。具体来说，context example和query越像、example越多样、每个样本越简单，泛化能力越好。
+
+30. **What Do Language Models Learn in Context? The Structured Task Hypothesis** (ACL 2024) [[paper]](http://arxiv.org/abs/2406.04216)
+
     
 
 
@@ -454,6 +462,7 @@
 
 1. **What Can Transformers Learn In-Context? A Case Study of Simple Function Classes** (NeurIPS 2022) [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/hash/c529dba08a146ea8d6cf715ae8930cbe-Abstract-Conference.html) 实验发现：1)linear function是能通过transformer学到的（性能能逼近最小二乘估计）2)ICL有一定的OOD泛化能力（train -> test, context -> test）3)ICL也能学到更复杂的函数，比如sparse linear functions、ReLU NNs、decision trees。
 2. **Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?** (EMNLP 2022) [[paper]](http://arxiv.org/abs/2202.12837) 探究ICL work的因素。
+3. **On the Compositional Generalization Gap of In-Context Learning** (Arxiv 2022) [[paper]](http://arxiv.org/abs/2211.08473) 在CFQ等组合泛化任务上测，发现大模型的OOD（query和context不一致）和ID之间的组合泛化能力的gap相比小模型更小。
 
 
 
