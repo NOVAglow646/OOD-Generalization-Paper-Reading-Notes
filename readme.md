@@ -1,12 +1,10 @@
 ## Preface
 
-本仓库记录关于OOD Generalization/Domain Generlization/In-context Learning/LLM/LVM等topic的文章。看过的文章会至少用一句话概括内容，有些还会有notes。只有标题的就是还没看过的，只是先存档到这里。
-
-**每天至少更新一篇文章。** 每天更新的文章会写在commit comment中。
+本仓库记录关于OOD Generalization (Domain Generlization)/Graph OOD Generalization/In-context Learning/LLM/LVM等topic的文章。看过的文章会至少用一句话概括内容，有些还会有notes。只有标题的就是还没看过的，只是先存档到这里。
 
 ###  🔥 Updates
 
-- 2024-05 接下来主要关注探究ICL机制的相关工作（牢OOD，想你了55）
+- 2024-05 接下来主要关注探究ICL机制的相关工作
 - 2024-02-21 接下来将会主要关注LLM/Multi-modal LLMs的generalization。
 
 ## Directory
@@ -256,6 +254,9 @@
 6.  **FLOOD: A Flexible Invariant Learning Framework for Out-of-Distribution Generalization on Graphs** (KDD 2023) node-level OOD任务。通过已有的图augmentation方法产生一系列增强环境，再使用如VREx的不变学习目标；同时加一个Bootstrapped Representation Learning目标。 [[paper]](https://dl.acm.org/doi/10.1145/3580305.3599355)
 7.  **Causality and Independence Enhancement for Biased Node Classification** (CIKM 2023) 把causal feature看成do(c)，然后假设s是c的backdoor，基于此模型来用一个经验性方法建模p(Y|C,S)从而学出causal feature/spurious feature（通过在node feature上加2个MLP实现）。感觉causal graph的假设太强。并且只能解决concept shift。 [[paper]](https://dl.acm.org/doi/10.1145/3583780.3614804)
 8.  **Learning Invariant Representations of Graph Neural Networks via Cluster Generalization** (NeurIPS 2023) [[paper]](https://proceedings.neurips.cc/paper_files/paper/2023/file/8ed2293e714b7692b63117e330e551e8-Paper-Conference.pdf) 解决结构shift，semi-supervised setting。通过聚类node feature获得环境，然后利用聚类信息外插node feature做数据增强。
+9.  **Stable Prediction on Graphs with Agnostic Distribution Shift** (KDD 2023) node-level，对齐不同环境的aggregation weight（要求数据集是不同环境的图长得一样）和不同环境的loss（VREx）。[[paper]](https://arxiv.org/abs/2110.03865) 
+10.  **Individual and Structural Graph Information Bottlenecks for Out-of-Distribution Generalization** (TKDE 2023) 最小化input graph和中间层representation之间的互信息以消除虚假特征，最大化representation和label之间的互信息来学习不变特征。[[paper]](http://arxiv.org/abs/2306.15902)
+11.  
 
 ###  2022
 
@@ -433,7 +434,9 @@
 
 29. **How Do In-Context Examples Affect Compositional Generalization?** (ACL 2024) [[paper]](http://arxiv.org/abs/2305.04835) 发现context example对于组合泛化能力影响显著。具体来说，context example和query越像、example越多样、每个样本越简单，泛化能力越好。
 
-30. **What Do Language Models Learn in Context? The Structured Task Hypothesis** (ACL 2024) [[paper]](http://arxiv.org/abs/2406.04216)
+30. **What Do Language Models Learn in Context? The Structured Task Hypothesis** (ACL 2024) [[paper]](http://arxiv.org/abs/2406.04216) 通过实验验证了ICL能够对预训练见过的任务进行复合的假设，否定了ICL仅仅能够进行分布内任务的试别以及ICL能够泛化到某些训练时没见过的任务的假设。
+
+31. 
 
     
 
