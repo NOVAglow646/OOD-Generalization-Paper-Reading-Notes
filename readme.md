@@ -308,6 +308,7 @@
 1. **A Theoretical Understanding of Self-Correction through In-context Alignment** (Arxiv May 2024) [[paper]](http://arxiv.org/abs/2405.18634) 理论分析transformer中的各个模块在self-correction中发挥的作用
 1. **Mechanics of Next Token Prediction with Self-Attention** (AISTATS 2024) [[paper]](https://proceedings.mlr.press/v238/li24f.html) 构造了一个graph来描述next token prediction任务，在简化setting下理论分析出last token更倾向于给更经常作为label的token分配更高的attention。
 1. **The pitfalls of next-token prediction** (Arxiv April 2024) [[paper]](http://arxiv.org/abs/2403.06963) 指出了自回归模型的缺陷：错误滚雪球效应和在一个单一token路径上只能学出一个类似induction head的shortcut模型
+1. 
 
 ### 2023
 
@@ -436,7 +437,9 @@
 
 30. **What Do Language Models Learn in Context? The Structured Task Hypothesis** (ACL 2024) [[paper]](http://arxiv.org/abs/2406.04216) 通过实验验证了ICL能够对预训练见过的任务进行复合的假设，否定了ICL仅仅能够进行分布内任务的试别以及ICL能够泛化到某些训练时没见过的任务的假设。
 
-31. 
+31. **What needs to go right for an induction head? A mechanistic study of in-context learning circuits and their formation** (ICML 2024) [[paper]](http://arxiv.org/abs/2404.07129) 识别了transformer在解决ICL的copy-and-paste任务中存在的三种circuit
+
+32. **In-Context Learning of Energy Functions** (ICML 2024 ICL workshop) [[paper]](http://arxiv.org/abs/2406.12785) 提出了将next-token的条件分布建模为能量函数的形式，发现transformer也能在这种形式下展现出ICL能力
 
     
 
@@ -549,7 +552,20 @@
 1. **Characterizing Graph Datasets for Node Classification: Homophily–Heterophily Dichotomy and Beyond** 
    
 
+### Meta-learning
 
+#### 2024
+
+1. **Meta-learning Approaches for Few-Shot Learning: A Survey of Recent Advances** (ACM Computing Surveys 2024) 综述
+2. **Advances and Challenges in Meta-Learning: A Technical Review** (TPAMI 2024) 综述
+
+#### 2021
+
+1. **Generalization Bounds For Meta-Learning: An Information-Theoretic Analysis** (NeurIPS 2021) 
+
+#### 2019
+
+1. **Provable Guarantees for Gradient-Based Meta-Learning**
 
 ## Slides
 
