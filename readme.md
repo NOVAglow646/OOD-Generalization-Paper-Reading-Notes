@@ -37,6 +37,7 @@
 ### 2024
 
 1. **On the Out-Of-Distribution Generalization of Multimodal Large Language Models** (Arxiv Feb 2024) [[paper]](http://arxiv.org/abs/2402.06599) 对MLLM进行了一系列OOD性能的验证，发现：①在经典OOD数据集上MLLM能超过以前的sota ②在医学、分子数据集上效果不好 ③ICL能提升MLLM OOD性能，即使ICL example的分布和测试域不同。
+1. **TAIA: Large Language Models are Out-of-Distribution Data Learners** (NeurIPS 2024) [[paper]](http://arxiv.org/abs/2405.20192) 提出了TAIA，对于OOD下游数据，同时fine-tune attn和FFN，但是推理时只采用ft后的attn而保留pretrain的FFN。动机是FFN保留了有用的预训练知识，但是在OOD数据上ft会破坏这些知识，所以保留预训练的FFN参数。而只tune attn的话，非线性程度不够，难以学到复杂的OOD特征，效果也不好。所以在ft时把FFN和attn一起tune，以让attn利用FFN的丰富的预训练知识。
 
 ### 2023
 
@@ -195,7 +196,7 @@
 
 5. **Improving out-of-distribution generalization via multi-task self-supervised pretraining** (Arxiv 2020) SSL pretraining tasks for OOD [[paper]](http://arxiv.org/abs/2003.13525)
 
-### 经典文章
+### Classic papers
 
 1. **Domain-Adversarial Training of Neural Networks** (2016) 提出DANN，训练domain label判别器来促使特征提取器学习到domain-invariant的特征 [[paper]](https://www.jmlr.org/papers/volume17/15-239/15-239.pdf)
 2. **In Search of Lost Domain Generalization** (ICLR 2021) Domainbed benchmark [[paper]](https://arxiv.org/abs/2007.01434)
@@ -297,7 +298,7 @@
 
 
 
-## LLMs
+## LLMs (Large language models)
 
 ### 2024
 
@@ -316,6 +317,7 @@
 2. **Reasoning or Reciting? Exploring the Capabilities and Limitations of Language Models Through Counterfactual Tasks** (Arxiv Aug 2023) [[paper]](http://arxiv.org/abs/2307.02477) 一些主要发现：①模型在counterfactual的setting中性能会变差，且setting和常见的、符合事实的setting相差越远，性能越差，说明了模型可能的记忆现象。②在算术任务上，ICL能提升counterfactual（不同进制的计算）性能，但和default setting的差距难以抹平。
 3. **Can the Inference Logic of Large Language Models be Disentangled into Symbolic Concepts?** (Arxiv Apr 2023) [[paper]](https://arxiv.org/abs/2304.01083) 提出了一种empirical的指标来衡量输入句子里的某些词和词组对某一特定输出的决定程度。
 4. **Contrastive Chain-of-Thought Prompting** (Arxiv Nov 2023) [[paper]](http://arxiv.org/abs/2311.09277) 使用对比CoT，即一个正确CoT搭配一个错误CoT能相比常规的CoT带来提升.
+5. 
 
 ### 2022
 
@@ -333,11 +335,16 @@
 
 
 
-## LVMs
+## VLMs (Vision-language models)
 
 ### 2024
 
 1. **VisionLLaMA: A Unified LLaMA Interface for Vision Tasks** (Arxiv Mar 2024) [[paper]](https://arxiv.org/pdf/2403.00522) Vision LLaMa
+2. **Is A Picture Worth A Thousand Words? Delving Into Spatial Reasoning for Vision Language Models** (NeurIPS 2024) [[paper]](http://arxiv.org/abs/2406.14852) 
+   在三个合成的空间理解任务上评测LLM和LVM，主要发现：1）该任务的总体表现并不好 2）对于VLM而言，更依赖于语言信息而不是视觉信息做决策，去掉/扰乱视觉信息甚至会有提升 3）VLM中的language encoder比同样的单独LLM性能更好，说明多模态pretrain对于language有用
+3. **Can Vision Language Models Learn from Visual Demonstrations of Ambiguous Spatial Reasoning?** (Arxiv Sep 2024) [[paper]](https://arxiv.org/abs/2406.02537) 
+4. **TOPVIEWRS: Vision-Language Models as Top-View Spatial Reasoners** (Arxiv June 2024) [[paper]](http://arxiv.org/abs/2406.02537) 提了一个新的俯视图理解的数据集，发现VLM的俯视图理解能力仍然很差
+5. **Emu3: Next-Token Prediction is All You Need** (Arxiv September 2024) [[paper]](http://arxiv.org/abs/2409.18869) 将文本、图片、视频都转化为token，进行next-token prediction的预训练。能同时做图片视频的生成、视觉-语言理解。
 
 ### 2022
 
@@ -456,14 +463,15 @@
 5. **Few-shot Fine-tuning vs. In-context Learning: A Fair Comparison and Evaluation** (Arxiv May 2023) [[paper]](https://www.lsv.uni-saarland.de/wp-content/uploads/2023/07/Few-shot-Fine-tuning-vs.-In-context-Learning.pdf) 在参数量相当的情况下，ICL的OOD不如FT。30B的ICL跟6.7B的FT性能相当。大部分情况下ICL不如FT。
 6. **Instruction-following Evaluation through Verbalizer Manipulation** (Arxiv July 2023) [[paper]](http://arxiv.org/abs/2307.10558) 发现LLM遵循flipped-label instructions的能力很差，说明ICL可能只是直接利用了预训练语料的知识，而不是学习了context。即使是强如GPT-4的模型也不能很好地遵循flipped-label instructions。
 7. **Reasoning or Reciting? Exploring the Capabilities and Limitations of Language Models Through Counterfactual Tasks** (Arxiv Aug 2023) [[paper]](http://arxiv.org/abs/2307.02477) 一些主要发现：①模型在counterfactual的setting中性能会变差，且setting和常见的、符合事实的setting相差越远，性能越差，说明了模型可能的记忆现象。②在算术任务上，ICL能提升counterfactual（不同进制的计算）性能，但和default setting的差距难以抹平。
-8. **The Learnability of In-Context Learning** (NeurIPS 2023) [[paper]](https://openreview.net/forum?id=f3JNQd7CHM) 证明了当预训练分布包含下游任务的分布的mixuture，ICL能逼近下游任务上的贝叶斯最优分类器。
 9. **What In-Context Learning "Learns" In-Context: Disentangling Task Recognition and Task Learning** (Findings of ACL 2023) [[paper]](http://arxiv.org/abs/2305.09731) 分别用随机label（x-y映射关系被破坏）和非自然语言label（x-y映射关系保留）来检验模型的从预训练知识中识别任务和从context中学习input-label映射关系的能力，发现：这两种能力同时存在；任务识别能力基本不随模型规模变化；in-context学习能力会随模型变大而上升。
 10. **Larger language models do in-context learning differently** (Arxiv Mar 2023) [[paper]](http://arxiv.org/abs/2303.03846) 和disentanglement TR and TL 那篇差不多，发现了：小模型会倾向于用prior，随着模型增大，覆盖prior而从context学习映射关系的能力会越来越强。
 11. **In-Context Learning Creates Task Vectors** (Arxiv Oct 2023) [[paper]](http://arxiv.org/abs/2310.15916) 同样发现context的最后一个token的表示encode了该任务的信息。通过实验发现ICL近似是在实现如下过程：1)从context学出一个映射函数 2)将这个映射函数用到query上来预测。一个重要观察是：说明模型更倾向于使用vector里的信息，而不是原始context
 12. **Label Words are Anchors: An Information Flow Perspective for Understanding In-Context Learning** (EMNLP 2023) [[paper]](http://arxiv.org/abs/2305.14160) 浅层网络从text到label聚合信息，深层网络从label到last token聚合信息。
-13. **Pretraining Data Mixtures Enable Narrow Model Selection Capabilities in Transformer Models** (Arxiv Nov 2023) [[paper]](http://arxiv.org/abs/2311.00871) 发现ICL在测试和预训练任务不同时性能不好。
+13. **Pretraining Data Mixtures Enable Narrow Model Selection Capabilities in Transformer Models** (Arxiv Nov 2023) [[paper]](http://arxiv.org/abs/2311.00871) 发现ICL在测试和预训练任务不相同时，性能不好。
 14. **Pretraining task diversity and the emergence of non-Bayesian in-context learning for regression** (NeurIPS 2023) [[paper]](https://arxiv.org/abs/2306.15063) 发现预训练学习的任务越多，ICL在新任务上的泛化越强（不同任务：不同线性回归的W）
 15. **The Transient Nature of Emergent In-Context Learning in Transformers** (NeurIPS 2023) [[paper]](http://arxiv.org/abs/2311.08360) 训练任务：每个序列的token都有一个label。该任务既可以用ICL解决也可以用In-weights Learning (IWL)解决。实验发现随着训练epoch增加，ICL性能先上升再下降，而IWL能力逐渐上升。
+16. **THE EFFECTS OF PRETRAINING TASK DIVERSITY ON IN-CONTEXT LEARNING OF RIDGE REGRESSION** (ICLR 2023 workshop) [[paper]](https://openreview.net/pdf?id=EshX_qlA3o) 随着预训练时见到的线性回归w（都来自同一分布）越来越多，ICL表现逐渐从MMSE（预训练w的加权组合）变为岭回归（test理论最优）。
+17. **Birth of a Transformer: A Memory Viewpoint** (NeurIPS 2023) [[paper]](https://proceedings.neurips.cc/paper_files/paper/2023/file/0561738a239a995c8cd2ef0e50cfa4fd-Paper-Conference.pdf) 构建了一个bigram任务，在简化setting下推导出了两层transformer要解决这个任务所应具备的参数闭式解，以此计算模型参数和最优解的差距来分析训练过程中的ICL能力的变化
 
 
 
@@ -491,7 +499,9 @@
 
 6. **In-Context Learning with Transformers: Softmax Attention Adapts to Function Lipschitzness** (Arxiv May 2024) [[paper]](http://arxiv.org/abs/2402.11639) softmax能adaptively学一个attention window来实现将context $y_i$ 进行插值作为预测，将分类任务中见到的retrieval机制拓展到了回归任务上。
 
-7. **Towards Better Understanding of In-Context Learning Ability from In-Context Uncertainty Quantification** (Arxiv May 2024) [[paper]](http://arxiv.org/abs/2405.15115)
+7. **Towards Better Understanding of In-Context Learning Ability from In-Context Uncertainty Quantification** (Arxiv May 2024) [[paper]](http://arxiv.org/abs/2405.15115) 理论，多头SoftMax attention，任务是估计p(y|x)和Var(y|x)，给出了分布内泛化error bound。
+
+8. **An Information-Theoretic Analysis of In-Context Learning** (Arxiv Jan 2024) [[paper]](http://arxiv.org/abs/2401.15530) 在信息论视角下，将ICL泛化误差拆解为多项。
 
 ### 2023
 
@@ -500,6 +510,18 @@
 3. **In-Context Convergence of Transformers** (Arxiv Oct 2023) [[paper]](http://arxiv.org/abs/2310.05249) linear regression任务，需要预训练，一层非线性attention，但是做了其他简化使得transforer就是在根据x之间的attention weight来加权组合各个context y作为最终预测。
 4. **Trained Transformers Learn Linear Models In-Context** (Arxiv Oct 2023) [[paper]](http://arxiv.org/abs/2306.09927) linear regression任务，需要预训练，一层线性attention。证明了预训练loss收敛到全局最优解时，当训练和测试context足够长时，能学到测试prompt上的正确解W。
 5. **What and How Does In-Context Learning Learn? Bayesian Model Averaging, Parameterization, and Generalization** (Arxiv Oct 2023) [[paper]](arXiv:2305.19420) 理论文章，还没看
+6. **Transformers as Statisticians: Provable In-Context Learning with In-Context Algorithm Selection** (NeurIPS 2023) [[paper]](https://proceedings.neurips.cc/paper_files/paper/2023/file/b2e63e36c57e153b9015fece2352a9f9-Paper-Conference.pdf) 证明了存在一个L-层线性transformer在线性回归、lasso、ridge问题上error有上界。同时在理论和实验上发现了会自动选择最优预训练知识的现象。
+7. **The Learnability of In-Context Learning** (NeurIPS 2023) [[paper]](https://openreview.net/forum?id=f3JNQd7CHM) 证明了当预训练分布包含下游任务的分布的mixuture，ICL能逼近下游任务上的贝叶斯最优分类器。
+
+
+
+## Multimodal ICL
+
+### 2024
+
+1. **What Makes Multimodal In-Context Learning Work?** (CVPR 2024 Workshop on Prompting in Vision) [[paper]](https://arxiv.org/abs/2404.15736) 对Multimodal ICL的实验性分析
+2. **Link-Context Learning for Multimodal LLMs** (CVPR 2024) [[paper]](https://openaccess.thecvf.com/content/CVPR2024/html/Tai_Link-Context_Learning_for_Multimodal_LLMs_CVPR_2024_paper.html) 提出一种新的fine-tune MLLM的方法：让context和query具有一定的causal联系，发现能提升模型通过context学习新概念的能力
+3. **Can Vision Language Models Learn from Visual Demonstrations of Ambiguous Spatial Reasoning?** (Arxiv Sep 2024) 
 
 
 
