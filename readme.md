@@ -53,7 +53,7 @@
 
 
 
-## OOD Generalization using Large Vision-language models
+## OOD Generalization Using Large Vision-language models
 
 ### 2023
 
@@ -66,9 +66,10 @@
 
 
 
-## New tasks of OOD Generalization
+## New Tasks of OOD Generalization
 
-1. **SimMMDG: A Simple and Effective Framework for Multi-modal Domain Generalization** (NeurIPS 2023) 多模态DG，将各模态的特征分为不同模态share的部分以及各个模态specific的部分，拉近同一class的不同模态shared部分的特征，推远share部分的特征和specific部分的特征。[[paper]](https://openreview.net/forum?id=RiSMijlsLT)
+1. **SimMMDG: A Simple and Effective Framework for Multi-modal Domain Generalization** (NeurIPS 2023) 新任务：多模态DG。方法：将各模态的特征分为不同模态share的部分以及各个模态specific的部分，拉近同一class的不同模态shared部分的特征，推远share部分的特征和specific部分的特征。[[paper]](https://openreview.net/forum?id=RiSMijlsLT)
+2. **Towards Multimodal Open-Set Domain Generalization and Adaptation through Self-supervision** (ECCV 2024) 
 
 
 
@@ -450,6 +451,8 @@
 
 33. **From Words to Numbers: Your Large Language Model Is Secretly A Capable Regressor When Given In-Context Examples** (Arxiv April 2024) [[paper]](http://arxiv.org/abs/2404.07544) 发现诸如GPT-4，Claude-3之类的LLM能够在不重新训练的情况下做linear和non-linear regression，甚至有时能超过supervised training的方法（但仅限于很大的LLM）。
 
+34. **Disentangling Latent Shifts of In-Context Learning Through Self-Training** (Arxiv Oct 2024) [[paper]](http://arxiv.org/abs/2410.01508) 针对ICL不稳定的问题，提出为student LLM训练一个adapter用来从teacher LLM那里获取context的知识。
+
     
 
 
@@ -522,6 +525,11 @@
 1. **What Makes Multimodal In-Context Learning Work?** (CVPR 2024 Workshop on Prompting in Vision) [[paper]](https://arxiv.org/abs/2404.15736) 对Multimodal ICL的实验性分析
 2. **Link-Context Learning for Multimodal LLMs** (CVPR 2024) [[paper]](https://openaccess.thecvf.com/content/CVPR2024/html/Tai_Link-Context_Learning_for_Multimodal_LLMs_CVPR_2024_paper.html) 提出一种新的fine-tune MLLM的方法：让context和query具有一定的causal联系，发现能提升模型通过context学习新概念的能力
 3. **Can Vision Language Models Learn from Visual Demonstrations of Ambiguous Spatial Reasoning?** (Arxiv Sep 2024) 
+4. **Finding Visual Task Vectors** (ECCV 2024) [[paper]](https://arxiv.org/pdf/2404.05729) 
+
+### 2023
+
+1. **What Makes Good Examples for Visual In-Context Learning?** [[paper]](https://proceedings.neurips.cc/paper_files/paper/2023/file/398ae57ed4fda79d0781c65c926d667b-Paper-Conference.pdf)
 
 
 
