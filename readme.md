@@ -311,6 +311,7 @@
 1. **Mechanics of Next Token Prediction with Self-Attention** (AISTATS 2024) [[paper]](https://proceedings.mlr.press/v238/li24f.html) 构造了一个graph来描述next token prediction任务，在简化setting下理论分析出last token更倾向于给更经常作为label的token分配更高的attention。
 1. **The pitfalls of next-token prediction** (Arxiv April 2024) [[paper]](http://arxiv.org/abs/2403.06963) 指出了自回归模型的缺陷：错误滚雪球效应和在一个单一token路径上只能学出一个类似induction head的shortcut模型
 1. **A Law of Next-Token Prediction in Large Language Models** (Arxiv August 2024) [[paper]](https://arxiv.org/pdf/2408.13442v1)
+1. **The Unlocking Spell on Base LLMs: Rethinking Alignment via In-Context Learning** (ICLR 2024) [[paper]](https://openreview.net/forum?id=wxJ0eXwwda) 通过ICL，添加system prompt和风格化的输出，实现只用很少的样本（3个）来ti'shengLLM alignment。
 
 ### 2023
 
@@ -333,6 +334,17 @@
 ### 2019
 
 1. **Are Sixteen Heads Really Better than One?** (NeurIPS 2019) [[paper]](https://proceedings.neurips.cc/paper_files/paper/2019/hash/2c601ad9d2ff9bc8b282670cdd54f69f-Abstract.html) 在某些层上，只用一个head性能也能保持不变。同时提出了使用attention梯度来衡量head的重要性，提出了剪枝策略。
+
+
+
+## MLLMs (Multimodal LLMs)
+
+### 2024
+
+1. **Janus: Decoupling Visual Encoding for Unified Multimodal Understanding and Generation** (Arxiv Oct 2024) [[paper]](http://arxiv.org/abs/2410.13848) 用一个自回归transformer统一实现多模态的理解和生成任务
+2. **DOES SPATIAL COGNITION EMERGE IN FRONTIER MODELS? **(Arxiv Oct 2024) [[paper]](http://arxiv.org/abs/2410.06468) 空间理解任务 SPACE benchmark
+3. **Task Navigator: Decomposing Complex Tasks for Multimodal Large Language Models** (CVPR 2024) [[paper]](https://openaccess.thecvf.com/content/CVPR2024W/MAR/papers/Ma_Task_Navigator_Decomposing_Complex_Tasks_for_Multimodal_Large_Language_Models_CVPRW_2024_paper.pdf) 工程文章，借助LLM分解任务，提升MLLM完成复杂视觉理解任务的能力
+4. **Decomposing Complex Visual Comprehension into Atomic Visual Skills for Vision Language Models** [[paper]](https://openreview.net/pdf?id=nFU4xCyoe0) 原子视觉任务benchmark Atomic Visual Skills Benchmark (AVSBench) 
 
 
 
@@ -454,6 +466,12 @@
 34. **Disentangling Latent Shifts of In-Context Learning Through Self-Training** (Arxiv Oct 2024) [[paper]](http://arxiv.org/abs/2410.01508) 针对ICL不稳定的问题，提出为student LLM训练一个adapter用来从teacher LLM那里获取context的知识。【insight】认为之前的vector系列工作只考虑attn head，不够全面。
 
 35. **Learning Task Representations from In-Context Learning** (ICML 2024 ICL workshop) [[paper]](Learning Task Representations from In-Context Learning) 提出learnable task vector（LTV），为所有head增加可学习的权重，然后加权组合每一个head的activation来得到每一层function vector。发现其可以增强ICL的长度泛化能力。
+
+36. **Task Diversity Shortens the ICL Plateau** (Arxiv Oct 2024) [[paper]](http://arxiv.org/abs/2410.05448) synthetic setting，在更多的function class上训练可以加快收敛。发现A任务训练到loss正在逃离plateau的checkpoint在B任务上继续训，可以加快B的训练，说明不同任务之间有一些common structure，提供了为什么多任务训练能更快收敛的一个解释。
+
+37. **Many-Shot In-Context Learning** (ICML 2024 ICL workshop) [[paper]](http://arxiv.org/abs/2404.11018) ICL的潜力被few-shot限制了
+
+38. **Out-of-distribution generalization via composition: a lens through induction heads in Transformers** (Arxiv Aug 2024) [[papaer]](http://arxiv.org/abs/2408.09503) 在OOD的copy任务上，发现了OOD性能源于执行不同功能层的composition（并没有测复杂的组合泛化任务）。还发现了induction head和previous token head的各自内部的表示的相似性。
 
     
 
