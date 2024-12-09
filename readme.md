@@ -242,6 +242,7 @@
 ### 2024
 
 1. **Graph Out-of-Distribution Generalization via Causal Intervention** (WWW 2024) [[paper]](http://arxiv.org/abs/2402.11494) node-level。提了一种data driven的方法来推测环境概率分布，并对每个环境的aggregation过程添加一个环境相关的可训练的projector
+1. **Dissecting the Failure of Invariant Learning on Graphs** (NeurIPS 2024) [[paper]](https://arxiv.org/abs/2411.02847) 理论分析出经典不变学习算法在node-level graph任务上的失效是由于缺乏足够的监督来辨识causal pattern。提出了CIA和CIA-LRA两种新的不变学习策略，后者能够在没有环境label的情况下实现对不变子图的捕获。同时给出了一个基于CSBM和PAC learning framework的node-level OOD generalization的error bound。
 
 ### 2023
 
@@ -255,7 +256,6 @@
 8.  **Learning Invariant Representations of Graph Neural Networks via Cluster Generalization** (NeurIPS 2023) [[paper]](https://proceedings.neurips.cc/paper_files/paper/2023/file/8ed2293e714b7692b63117e330e551e8-Paper-Conference.pdf) 解决结构shift，semi-supervised setting。通过聚类node feature获得环境，然后利用聚类信息外插node feature做数据增强。
 9.  **Stable Prediction on Graphs with Agnostic Distribution Shift** (KDD 2023) node-level，对齐不同环境的aggregation weight（要求数据集是不同环境的图长得一样）和不同环境的loss（VREx）。[[paper]](https://arxiv.org/abs/2110.03865) 
 10.  **Individual and Structural Graph Information Bottlenecks for Out-of-Distribution Generalization** (TKDE 2023) 最小化input graph和中间层representation之间的互信息以消除虚假特征，最大化representation和label之间的互信息来学习不变特征。[[paper]](http://arxiv.org/abs/2306.15902)
-11.  
 
 ###  2022
 
